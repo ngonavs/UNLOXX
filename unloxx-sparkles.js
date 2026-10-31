@@ -62,7 +62,7 @@
       const y = edge === 0 ? box.top - margin : edge === 1 ? box.top + along * box.height : edge === 2 ? box.bottom + margin : box.top + along * box.height;
       const angle = edge === 0 ? -Math.PI / 2 : edge === 1 ? 0 : edge === 2 ? Math.PI / 2 : Math.PI;
       const drift = angle + (Math.random() - 0.5) * 0.65;
-      const travel = 30 + Math.random() * 34;
+      const travel = 95 + Math.random() * 85;
       const size = 15 + Math.random() * 9;
       const el = document.createElement("div");
       el.appendChild(kind === "mentor" ? pistolSvg(size) : starSvg(palette[i % palette.length], size));
@@ -74,14 +74,14 @@
       });
       host.appendChild(el);
       const dx = Math.cos(drift) * travel, dy = Math.sin(drift) * travel;
-      const duration = 650 + Math.random() * 220;
+      const duration = 950 + Math.random() * 300;
       const anim = el.animate([
         {transform: "translate(0px, 0px) scale(.8) rotate(0deg)", opacity: 0.95, offset: 0},
         {transform: "translate(" + dx * .35 + "px," + dy * .35 + "px) scale(1.2) rotate(35deg)", opacity: 1, offset: .35},
         {transform: "translate(" + dx + "px," + dy + "px) scale(.65) rotate(115deg)", opacity: 0, offset: 1}
       ], {duration, easing: "cubic-bezier(.16,.72,.3,1)", fill: "forwards"});
       anim.onfinish = () => el.remove();
-      setTimeout(() => el.remove(), 1100);
+      setTimeout(() => el.remove(), 1500);
     }
   }
   document.addEventListener("click", (event) => {
