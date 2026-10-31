@@ -36,30 +36,37 @@
     if (reduce.matches) return;
     const box = button.getBoundingClientRect();
     if (!box.width || !box.height) return;
-    const cx = box.left + box.width / 2, cy = box.top + box.height / 2;
     const host = layer();
-    for (let i = 0; i < 13; i++) {
-      const angle = (Math.PI * 2 * i / 13) + (Math.random() - 0.5) * 0.25;
-      const travel = 78 + Math.random() * 82;
-      const size = 25 + Math.random() * 17;
+    // Each star begins just outside a different edge of the button.
+    const count = 6;
+    for (let i = 0; i < count; i++) {
+      const edge = i % 4;
+      const margin = 6;
+      const along = 0.2 + Math.random() * 0.6;
+      const x = edge === 0 ? box.left + along * box.width : edge === 1 ? box.right + margin : edge === 2 ? box.left + along * box.width : box.left - margin;
+      const y = edge === 0 ? box.top - margin : edge === 1 ? box.top + along * box.height : edge === 2 ? box.bottom + margin : box.top + along * box.height;
+      const angle = edge === 0 ? -Math.PI / 2 : edge === 1 ? 0 : edge === 2 ? Math.PI / 2 : Math.PI;
+      const drift = angle + (Math.random() - 0.5) * 0.65;
+      const travel = 30 + Math.random() * 34;
+      const size = 15 + Math.random() * 9;
       const el = document.createElement("div");
       el.appendChild(starSvg(palette[i % palette.length], size));
       Object.assign(el.style, {
-        position: "absolute", left: cx + "px", top: cy + "px",
+        position: "absolute", left: x + "px", top: y + "px",
         width: size + "px", height: size + "px",
         marginLeft: -size / 2 + "px", marginTop: -size / 2 + "px",
         pointerEvents: "none", filter: "drop-shadow(0 2px 3px #142d4666)"
       });
       host.appendChild(el);
-      const dx = Math.cos(angle) * travel, dy = Math.sin(angle) * travel;
-      const duration = 900 + Math.random() * 300;
+      const dx = Math.cos(drift) * travel, dy = Math.sin(drift) * travel;
+      const duration = 650 + Math.random() * 220;
       const anim = el.animate([
         {transform: "translate(0px, 0px) scale(.8) rotate(0deg)", opacity: 0.95, offset: 0},
         {transform: "translate(" + dx * .35 + "px," + dy * .35 + "px) scale(1.2) rotate(35deg)", opacity: 1, offset: .35},
         {transform: "translate(" + dx + "px," + dy + "px) scale(.65) rotate(115deg)", opacity: 0, offset: 1}
       ], {duration, easing: "cubic-bezier(.16,.72,.3,1)", fill: "forwards"});
       anim.onfinish = () => el.remove();
-      setTimeout(() => el.remove(), 1500);
+      setTimeout(() => el.remove(), 1100);
     }
   }
   document.addEventListener("click", (event) => {
