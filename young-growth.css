@@ -1,0 +1,26 @@
+#young .young-growth-note{margin:14px 0;padding:12px 16px;border-radius:12px;background:#e7f3ed;color:#315f56;font-size:.88rem}#young .young-growth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:18px 0}#young .young-growth-card{border:1px solid #d6e6df;background:#fffefa;border-radius:18px;padding:19px;box-shadow:0 4px 18px #1c504510}#young .young-growth-card h3{margin:8px 0 4px}#young .young-growth-card button{margin-top:10px;background:#267c78;min-height:43px}#young .young-growth-avatar{width:46px;height:46px;border-radius:16px;background:#d3ebe1;color:#195e55;display:grid;place-items:center;font-size:1.4rem;font-weight:800}#young .young-growth-input{display:block;width:100%;max-width:780px;padding:13px;border:1px solid #b4d3c7;border-radius:13px;background:#fffefa;color:#24383a;font:inherit;margin:12px 0}#young .young-growth-label{display:block;font-weight:750;margin-top:20px}#young .young-growth-progress{font-weight:800;color:#247b70}#young .young-growth-results{margin-top:20px}#young .young-growth-panel{padding-bottom:30px}#young .tabs{flex-wrap:wrap}#young .tabs button{flex-shrink:0}@media(max-width:600px){#young .young-growth-grid{grid-template-columns:1fr}#young .tabs{flex-wrap:nowrap}}
+/* Young sanctuary: gentle surfaces, futuristic glow, and joyful achievements */
+#young{color:#243b40}
+#young .young-future-welcome{position:relative;overflow:hidden;background:radial-gradient(circle at 92% 8%,#9adbd455,transparent 35%),linear-gradient(125deg,#e4f3ed,#fff9ed);border:1px solid #b8ddd1;box-shadow:0 12px 34px #174e4220;padding:clamp(22px,4vw,36px)}
+#young .young-future-welcome:after{content:"✦";position:absolute;right:4%;top:0;font-size:6rem;color:#61b8aa25;pointer-events:none}
+#young .young-future-welcome h2{font-size:clamp(1.5rem,3.6vw,2.3rem);letter-spacing:-.04em;max-width:630px}
+#young .young-future-welcome p{max-width:590px;line-height:1.7}
+#young .young-achievement-hub{background:radial-gradient(circle at 100% 0%,#3b7773,transparent 45%),linear-gradient(120deg,#172d3b,#244a4c);color:#f7f8ee;border-radius:24px;padding:clamp(20px,4vw,30px);margin:18px 0 25px;box-shadow:0 16px 36px #193c4440}
+#young .young-achievement-heading{display:flex;gap:14px;align-items:center;margin-bottom:18px}
+#young .young-achievement-symbol{font-size:2.1rem;color:#e6d19b;background:#ffffff16;border:1px solid #ffffff40;border-radius:16px;padding:8px 17px}
+#young .young-achievement-kicker{color:#b9e2d7;font-size:.7rem;font-weight:850;letter-spacing:.16em}
+#young .young-achievement-heading h3{font-size:clamp(1.15rem,2.5vw,1.5rem);margin:4px 0}
+#young .young-achievement-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+#young .young-achievement-stat{background:#ffffff14;border:1px solid #ffffff26;border-radius:14px;padding:14px 12px;display:flex;flex-direction:column;gap:2px}
+#young .young-achievement-stat strong{font-size:clamp(1.3rem,3vw,1.8rem);color:#f4e3b8}
+#young .young-achievement-stat span{font-size:.77rem;color:#d5e9e2}
+#young .young-achievement-bar{height:9px;background:#ffffff30;border-radius:30px;margin-top:19px;overflow:hidden}
+#young .young-achievement-fill{height:100%;border-radius:30px;background:linear-gradient(90deg,#80d6c1,#f0d797);transition:width .45s ease}
+#young .young-achievement-caption{color:#cde7df;font-size:.85rem;margin:10px 0 0}
+#young .young-growth-card{transition:transform .2s ease,box-shadow .2s ease}
+#young .young-growth-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px #1c50451c}
+#young .young-growth-avatar{background:linear-gradient(145deg,#d8eee5,#b6d8d1)}
+#young .young-growth-panel>h2{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.03em}
+#young .young-growth-panel>p.muted{max-width:700px}
+@media(max-width:640px){#young .young-achievement-stats{grid-template-columns:repeat(2,minmax(0,1fr))}#young .young-achievement-hub{border-radius:19px}#young .young-achievement-heading{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){#young .young-achievement-fill,#young .young-growth-card{transition:none!important;transform:none!important}}
