@@ -4,6 +4,8 @@
   let activeMentor = "Demo Mentor";
   const praise = ["GOOD!", "EXCELLENT!", "WOW!", "YOU SLAYED!", "YOU NAILED IT!", "YOU CRUSHED IT!", "LEGENDARY!", "BRILLIANT!", "YOU ACED IT!", "ICONIC!"];
   let praiseIndex = 0;
+  const savePraise = ["EXCELLENT!", "GOOD!", "ICONIC!"];
+  let savePraiseIndex = 0;
   function nextPraise() {
     // Persist across page refreshes so the next achievement gets the next message.
     try {
@@ -38,7 +40,7 @@
   `;
   document.head.appendChild(style);
   let activeCelebration = null;
-  function celebrate() {
+  function celebrate(kind) {
     if (activeCelebration) activeCelebration.remove();
     const host = document.createElement("div");
     host.className = "unloxx-wow-layer";
@@ -46,7 +48,17 @@
     host.setAttribute("aria-label", "Achievement complete");
     const word = document.createElement("div");
     word.className = "unloxx-wow-word";
-    word.textContent = nextPraise();
+    if (kind === "save") {
+      try {
+        const n = Number(sessionStorage.getItem("unloxxSavePraiseIndex"));
+        if (Number.isInteger(n) && n >= 0) savePraiseIndex = n % savePraise.length;
+      } catch (_) {}
+      word.textContent = savePraise[savePraiseIndex];
+      savePraiseIndex = (savePraiseIndex + 1) % savePraise.length;
+      try { sessionStorage.setItem("unloxxSavePraiseIndex", String(savePraiseIndex)); } catch (_) {}
+    } else {
+      word.textContent = nextPraise();
+    }
     host.append(word);
     document.body.append(host);
     activeCelebration = host;
