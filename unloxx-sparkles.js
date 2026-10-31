@@ -38,7 +38,7 @@
     if (!box.width || !box.height) return;
     const host = layer();
     // Each star begins just outside a different edge of the button.
-    const count = 6;
+    const count = 13;
     for (let i = 0; i < count; i++) {
       const edge = i % 4;
       const margin = 6;
