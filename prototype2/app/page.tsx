@@ -1,0 +1,2 @@
+import Link from 'next/link';
+export default function Home() { return <main style={{maxWidth: 780, margin:'auto', padding:32}}><h1>UNLOXX Prototype 2</h1><p>Private development preview. Existing UNLOXX website remains unchanged.</p><nav style={{display:'flex',gap:20,flexWrap:'wrap'}}><Link href="/mentor">Mentor</Link><Link href="/school">School</Link><Link href="/young">Young</Link><Link href="/admin">Admin</Link></nav></main>; }
