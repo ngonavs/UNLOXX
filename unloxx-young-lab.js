@@ -21,6 +21,15 @@ const features=[
 ["young-workshops","📅 Workshops","Explore sample events and registration."],
 ["young-worldlab","✨ My World","Make your UNLOXX space your own."]
 ];
+// Pricing preview only: no checkout, payment processing, or paid access verification.
+const overview = document.getElementById("young-overview");
+if (overview) {
+  const pricing = el("div","unloxx-lab-card");
+  pricing.append(el("h3","","UNLOXX Plans · Preview"));
+  pricing.append(el("p","","Free: Ask UNLOXX AI, nickname and optional birthday. UNLOXX Plus: ₹99/month for My Future, Focus Studio, Creation Studio, Workshops and additional personalization."));
+  pricing.append(el("p","unloxx-lab-note","Pricing is planned. No payment is collected, and premium features remain available for prototype testing."));
+  overview.append(pricing);
+}
 features.forEach(([id,label])=>{const b=el("button","",label);b.type="button";b.dataset.panel=id;tabs.append(b);});
 const roadmap={
 Scientist:["Ask a research question","Plan a simple experiment","Record observations","Explain what you discovered"],
