@@ -4,7 +4,7 @@ const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
 const css=document.createElement("style");css.textContent=`
 .unloxx-stars{position:fixed;inset:0;pointer-events:none;z-index:2147483647;overflow:hidden}
 .unloxx-star{position:absolute;left:0;top:0;display:block;font-family:system-ui,sans-serif;font-weight:900;line-height:1;transform:translate3d(-50%,-50%,0);opacity:0;text-shadow:0 2px 6px #18364d66,0 0 9px #f8d779bb;animation:unloxx-star-flight var(--dur) cubic-bezier(.15,.7,.28,1) both;will-change:transform,opacity}
-@keyframes unloxx-star-flight{0%{opacity:0;transform:translate3d(var(--x),var(--y),0) scale(.7) rotate(0deg)}14%{opacity:1}40%{opacity:1;transform:translate3d(calc(var(--x) + var(--dx) * .35),calc(var(--y) + var(--dy) * .35),0) scale(1.25) rotate(40deg)}100%{opacity:0;transform:translate3d(calc(var(--x) + var(--dx)),calc(var(--y) + var(--dy)),0) scale(.8) rotate(var(--rot))}}
+@keyframes unloxx-star-flight{0%{opacity:0;transform:translate3d(var(--x),var(--y),0) scale(.7) rotate(0deg)}14%{opacity:1}40%{opacity:1;transform:translate3d(var(--x),var(--y),0) scale(1.25) rotate(40deg)}100%{opacity:0;transform:translate3d(calc(var(--x) + var(--dx)),calc(var(--y) + var(--dy)),0) scale(.8) rotate(var(--rot))}}
 @media(prefers-reduced-motion:reduce){.unloxx-star{animation:none!important;display:none!important}}
 `;document.head.appendChild(css);
 let layer;
