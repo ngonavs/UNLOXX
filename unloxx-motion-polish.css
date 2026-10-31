@@ -1,10 +1,10 @@
 /* UNLOXX motion polish — lightweight, accessible, compositor-friendly. */
 :root { --motion-ease: cubic-bezier(.22,1,.36,1); }
 @media (prefers-reduced-motion: no-preference) {
-  main > section, main > .hero, main > .grid { animation: unloxxEnter .55s var(--motion-ease) both; }
+  /* Avoid animating entire portal sections on slower mobile devices. */
   @keyframes unloxxEnter { from { opacity:0; transform:translate3d(0,14px,0) } to { opacity:1; transform:translate3d(0,0,0) } }
   .card, .portal-card, .item { transition:transform .28s var(--motion-ease),box-shadow .28s ease,border-color .28s ease; }
-  .card:hover, .portal-card:hover { transform:translate3d(0,-4px,0);box-shadow:0 18px 40px #132a461a; }
+  .card:hover, .portal-card:hover { transform:translate3d(0,-4px,0);box-shadow:0 8px 18px #132a4612; }
   button:not(:disabled) { transition:transform .2s var(--motion-ease),background-color .2s ease,box-shadow .2s ease,filter .2s ease; }
   button:not(:disabled):active { transform:scale(.965); }
   .tabs button, .school-tabs button, [role="tab"] { transition:background-color .24s ease,color .24s ease,transform .24s var(--motion-ease),box-shadow .24s ease; }
