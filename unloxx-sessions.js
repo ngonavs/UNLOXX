@@ -37,7 +37,7 @@
     }
     const prop = document.createElement("div");
     prop.className = "unloxx-wow-prop";
-    prop.textContent = "🔫";
+    prop.innerHTML = '<svg width="132" height="88" viewBox="0 0 180 110" aria-hidden="true"><path d="M9 24 H163 Q171 24 171 32 V48 H114 L102 62 H88 L75 102 H44 L55 56 H9 Z" fill="#15191f" stroke="#050607" stroke-width="5" stroke-linejoin="round"/><path d="M55 56 H91 L82 72 H65 Z" fill="#4a4d52" stroke="#111" stroke-width="4"/><path d="M12 29 H166" stroke="#697078" stroke-width="4"/><path d="M45 100 L74 100" stroke="#555" stroke-width="4"/></svg>';
     prop.setAttribute("aria-hidden","true");
     const projectile = document.createElement("div");
     projectile.className = "unloxx-wow-projectile";
