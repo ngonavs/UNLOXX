@@ -37,7 +37,7 @@
     }
     const prop = document.createElement("div");
     prop.className = "unloxx-wow-prop";
-    prop.innerHTML = '<svg width="132" height="88" viewBox="0 0 180 110" aria-hidden="true"><defs><linearGradient id="wowmetal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#65717e"/><stop offset=".38" stop-color="#1c232d"/><stop offset="1" stop-color="#090c12"/></linearGradient></defs><path d="M9 24 H163 Q171 24 171 32 V48 H114 L102 62 H88 L75 102 H44 L55 56 H9 Z" fill="url(#wowmetal)" stroke="#050607" stroke-width="4" stroke-linejoin="round"/><path d="M55 56 H91 L82 72 H65 Z" fill="#3c424b" stroke="#111" stroke-width="4"/><path d="M12 29 H166" stroke="#89939d" stroke-width="3"/><path d="M45 100 L74 100" stroke="#555" stroke-width="4"/></svg>';
+    prop.innerHTML = '<svg width="154" height="100" viewBox="0 0 200 125" aria-hidden="true"><defs><linearGradient id="unloxx-metal-recoil" x1="0" y1="0" x2=".1" y2="1"><stop stop-color="#78828d"/><stop offset=".18" stop-color="#373f49"/><stop offset=".52" stop-color="#171b22"/><stop offset="1" stop-color="#080a0e"/></linearGradient><linearGradient id="unloxx-grip-recoil" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#484e56"/><stop offset="1" stop-color="#11151a"/></linearGradient></defs><path d="M12 28 Q13 21 23 21 H173 Q183 21 185 31 V46 L176 51 H128 L118 61 H104 L89 114 Q87 119 81 119 H47 Q42 119 45 111 L58 62 H19 Q12 62 12 54 Z" fill="url(#unloxx-metal-recoil)" stroke="#080b0f" stroke-width="4" stroke-linejoin="round"/><path d="M17 27 H177 V32 H17 Z" fill="#88939d" opacity=".65"/><path d="M17 43 H177" stroke="#080b0f" stroke-width="3"/><path d="M55 66 L88 66 L75 112 H48 Z" fill="url(#unloxx-grip-recoil)" stroke="#090c10" stroke-width="2"/><path d="M61 76 L78 76 M58 83 L76 83 M56 90 L74 90 M54 97 L72 97 M52 104 L70 104" stroke="#8b939d" stroke-width="1.5" opacity=".4"/><path d="M103 60 H128 L119 79 H105 Q99 73 103 60 Z" fill="#090b10"/><path d="M111 62 Q111 72 119 70" fill="none" stroke="#8a9199" stroke-width="3"/><path d="M158 35 V47 M166 35 V47 M174 35 V47" stroke="#a4adb6" stroke-width="2" opacity=".55"/><circle cx="31" cy="50" r="3" fill="#a0aab5"/><path d="M185 31 V46" stroke="#b6bec7" stroke-width="3"/></svg>';
     prop.setAttribute("aria-hidden","true");
     const projectile = document.createElement("div");
     projectile.className = "unloxx-wow-projectile";
@@ -47,11 +47,17 @@
     const start = 130, change = Math.max(150, vw * .43), finish = vw + 260;
     const duration = 2300;
     const options = {duration, easing:"linear", fill:"forwards"};
+    // Brief recoil: kick backward, return to the same resting position, then fade.
     prop.animate([
-      {transform:"translate3d(-150px,0,0)",opacity:0,offset:0},
+      {transform:"translate3d(-160px,0,0)",opacity:0,offset:0},
       {transform:"translate3d(0,0,0)",opacity:1,offset:.12},
-      {transform:"translate3d(0,0,0)",opacity:1,offset:.27},
-      {transform:"translate3d(-150px,0,0)",opacity:0,offset:.4}
+      {transform:"translate3d(0,0,0)",opacity:1,offset:.275},
+      {transform:"translate3d(-23px,4px,0) rotate(-5deg)",opacity:1,offset:.305},
+      {transform:"translate3d(6px,-2px,0) rotate(1.5deg)",opacity:1,offset:.345},
+      {transform:"translate3d(0,0,0) rotate(0deg)",opacity:1,offset:.395},
+      {transform:"translate3d(0,0,0)",opacity:1,offset:.49},
+      {transform:"translate3d(0,0,0)",opacity:0,offset:.59},
+      {transform:"translate3d(0,0,0)",opacity:0,offset:1}
     ],options);
     projectile.style.left = start + "px";
     projectile.animate([
