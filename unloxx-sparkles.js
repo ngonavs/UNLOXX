@@ -1,17 +1,17 @@
-/* Small decorative star burst when switching between portal tabs. */
+/* UNLOXX visible star burst on navigation tab clicks */
 (()=>{"use strict";
-const motion=window.matchMedia("(prefers-reduced-motion: reduce)");
+const reduced=window.matchMedia("(prefers-reduced-motion: reduce)");
 const css=document.createElement("style");css.textContent=`
-.unloxx-spark-layer{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9999;contain:strict}
-.unloxx-spark{position:absolute;left:0;top:0;display:block;width:var(--spark-size);height:var(--spark-size);background:var(--spark-color);clip-path:polygon(50% 0%,60% 37%,100% 50%,60% 63%,50% 100%,40% 63%,0% 50%,40% 37%);transform:translate3d(var(--spark-x),var(--spark-y),0) scale(.5);opacity:0;animation:unloxx-spark-fly var(--spark-duration) cubic-bezier(.15,.7,.25,1) forwards;will-change:transform,opacity}
-@keyframes unloxx-spark-fly{0%{opacity:0;transform:translate3d(var(--spark-x),var(--spark-y),0) scale(.25) rotate(0deg)}12%{opacity:1}65%{opacity:.9}100%{opacity:0;transform:translate3d(calc(var(--spark-x) + var(--spark-dx)),calc(var(--spark-y) + var(--spark-dy)),0) scale(.08) rotate(var(--spark-rot))}}
-@media(prefers-reduced-motion:reduce){.unloxx-spark{animation:none!important;display:none!important}}
-`;document.head.append(css);
-let layer=null;function sparkle(target){if(motion.matches)return;const rect=target.getBoundingClientRect();if(!rect.width||!rect.height)return;
-if(!layer){layer=document.createElement("div");layer.className="unloxx-spark-layer";layer.setAttribute("aria-hidden","true");document.body.append(layer)}
-const x=rect.left+rect.width/2,y=rect.top+rect.height/2;
-const count=12,colors=["#f1c86c","#ffecb4","#a8e8dc","#f7f9ff"];
-for(let i=0;i<count;i++){const a=(Math.PI*2*i/count)+(Math.random()-.5)*.4;const dist=30+Math.random()*55;const star=document.createElement("i");star.className="unloxx-spark";star.style.setProperty("--spark-x",x+"px");star.style.setProperty("--spark-y",y+"px");star.style.setProperty("--spark-dx",Math.cos(a)*dist+"px");star.style.setProperty("--spark-dy",Math.sin(a)*dist+20+"px");star.style.setProperty("--spark-rot",(120+Math.random()*260)+"deg");star.style.setProperty("--spark-size",(4+Math.random()*7)+"px");star.style.setProperty("--spark-color",colors[i%colors.length]);star.style.setProperty("--spark-duration",(480+Math.random()*250)+"ms");layer.append(star);star.addEventListener("animationend",()=>star.remove(),{once:true});setTimeout(()=>star.remove(),900)}
+.unloxx-stars{position:fixed;inset:0;pointer-events:none;z-index:2147483647;overflow:hidden}
+.unloxx-star{position:absolute;left:0;top:0;display:block;font-family:system-ui,sans-serif;font-weight:900;line-height:1;transform:translate3d(-50%,-50%,0);opacity:0;text-shadow:0 0 5px #f8d779aa;animation:unloxx-star-flight var(--dur) cubic-bezier(.15,.7,.28,1) both;will-change:transform,opacity}
+@keyframes unloxx-star-flight{0%{opacity:0;transform:translate3d(var(--x),var(--y),0) scale(.25) rotate(0deg)}14%{opacity:1}40%{opacity:1}100%{opacity:0;transform:translate3d(calc(var(--x) + var(--dx)),calc(var(--y) + var(--dy)),0) scale(.45) rotate(var(--rot))}}
+@media(prefers-reduced-motion:reduce){.unloxx-star{animation:none!important;display:none!important}}
+`;document.head.appendChild(css);
+let layer;
+function burst(button){if(reduced.matches)return;const box=button.getBoundingClientRect();if(box.width<2||box.height<2)return;if(!layer){layer=document.createElement("div");layer.className="unloxx-stars";layer.setAttribute("aria-hidden","true");document.body.append(layer)}
+const cx=box.left+box.width/2,cy=box.top+box.height/2;
+const colors=["#ffce57","#f6b82b","#fff3bd","#61d9bd","#ffffff"];
+for(let i=0;i<20;i++){const angle=(Math.PI*2*i/20)+(Math.random()-.5)*.3;const distance=44+Math.random()*65;const star=document.createElement("span");star.className="unloxx-star";star.textContent=i%3===0?"✦":"★";star.style.color=colors[i%colors.length];star.style.fontSize=(9+Math.random()*9)+"px";star.style.setProperty("--x",cx+"px");star.style.setProperty("--y",cy+"px");star.style.setProperty("--dx",Math.cos(angle)*distance+"px");star.style.setProperty("--dy",(Math.sin(angle)*distance+18)+"px");star.style.setProperty("--rot",(Math.random()*280-140)+"deg");star.style.setProperty("--dur",(750+Math.random()*250)+"ms");layer.append(star);star.addEventListener("animationend",()=>star.remove(),{once:true});setTimeout(()=>star.remove(),1250)}
 }
-document.addEventListener("click",event=>{const b=event.target.closest("button[data-panel],button[data-school-tab],.young-world-tabs button,.young-growth-tabs button,.tabs button,[role=tab]");if(!b||b.disabled)return;sparkle(b)},true);
+document.addEventListener("click",event=>{const el=event.target instanceof Element?event.target:null;const button=el?.closest('button[data-panel],button[data-school-tab],.tabs button,.school-tabs button,[role="tab"],.young-growth-tabs button,.young-world-tabs button');if(button&&!button.disabled)burst(button)},true);
 })();
