@@ -5,6 +5,52 @@
 
 /* UNLOXX design refresh */
 :root{--navy:#111f3b;--gold:#f0cb87;--ivory:#f6f8fc;--ink:#17243b;--teal:#167d78}html{scroll-behavior:smooth}body{background:radial-gradient(ellipse at 8% 12%,#e5edf9 0%,transparent 36%),radial-gradient(ellipse at 90% 65%,#e6f4f0 0%,transparent 34%),var(--ivory)}header{background:#111f3bf2;backdrop-filter:blur(14px);box-shadow:0 6px 26px #0a173327}header strong{font-size:1.65rem}nav button.light{background:transparent;color:#e7eefc;border:1px solid #ffffff35}nav button.nav-active{background:var(--gold);color:#111f3b;border-color:var(--gold)}main{max-width:1190px}.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 90% 0%,#4771a9 0%,transparent 37%),linear-gradient(135deg,#101d37,#1c3961 75%);border:1px solid #ffffff25;box-shadow:0 18px 46px #172c5540;padding:clamp(35px,7vw,85px)}.hero:after{content:"✦";position:absolute;right:8%;bottom:5%;font-size:clamp(6rem,16vw,13rem);color:#ffffff0b;pointer-events:none}.hero h1{font-weight:850;letter-spacing:-.045em;max-width:750px}.hero p{font-size:1.12rem}.hero-stats{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 30px}.hero-stats>div{flex:1;min-width:150px;background:white;border:1px solid #dfe7f2;border-radius:16px;padding:18px 24px;box-shadow:0 7px 25px #172c5510}.hero-stats b{font-size:1.65rem;color:#1d406b;display:block}.hero-stats span{color:#64748b;font-size:.85rem}.card{border-color:#e2e8f2;box-shadow:0 8px 28px #1224450e;transition:transform .2s ease,box-shadow .2s ease}.card:hover{transform:translateY(-3px);box-shadow:0 16px 34px #1224451c}.card h3{font-size:1.14rem}.dash{background:radial-gradient(circle at 90% 0%,#5479b0,transparent 35%),linear-gradient(110deg,#101d37,#2d5386);box-shadow:0 14px 34px #172c5524}.tabs button{transition:background .2s ease;box-shadow:0 2px 7px #172c5508}.tabs button.active{background:#203d66}.item{transition:border-color .2s ease}.item:hover{border-color:#93b9ce}.item button{margin-top:4px}button{transition:transform .15s ease,filter .15s ease}button:active{transform:scale(.98)}.field input:focus,.field textarea:focus,.field select:focus{border-color:#167d78;box-shadow:0 0 0 3px #167d7820;outline:none}.footer{font-size:.87rem}@media(prefers-reduced-motion:reduce){.card,button{transition:none!important}}@media(max-width:730px){header{gap:14px}header nav{width:100%}header nav button{flex:1;padding:9px 5px;font-size:.85rem}.hero-stats>div{min-width:90px;padding:13px}.hero-stats span{font-size:.75rem}}
+
+/* Prototype 1.5: editorial interface */
+:root{--navy:#101b32;--gold:#f2ce88;--ivory:#f8fafc;--teal:#087f79}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:#17243a}
+header{padding:13px max(3%,18px);background:#0e1c34f5;border-bottom:1px solid #ffffff24}
+header strong{font-size:1.55rem;letter-spacing:.1em}
+main{max-width:1240px;padding-top:32px}
+.hero{min-height:390px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at 85% 25%,#4a74ae66,transparent 33%),radial-gradient(circle at 60% 110%,#127f7855,transparent 35%),linear-gradient(120deg,#101b32,#203e68);border-radius:28px}
+.hero h1{font-size:clamp(2.7rem,6.5vw,5rem);max-width:800px;line-height:1.05}
+.hero p{font-size:clamp(1rem,1.6vw,1.25rem)}
+.hero .eyebrow{display:inline-flex;align-self:flex-start;background:#f2ce881c;border:1px solid #f2ce8860;padding:6px 13px;border-radius:30px}
+.hero-stats>div{border-radius:20px;background:linear-gradient(135deg,#fff,#f2f6fc);padding:24px}
+.hero-stats b{font-size:2rem}
+.grid{gap:20px}
+.card{border-radius:22px;padding:26px;background:linear-gradient(160deg,#fff,#fbfdff);min-height:170px}
+.card .icon{display:inline-grid;place-items:center;width:58px;height:58px;border-radius:17px;background:#e9f2fa;margin-bottom:8px}
+.card h3{letter-spacing:-.02em}
+button{border-radius:12px;padding:11px 17px}
+button.gold{background:#f2ce88}
+button.teal{background:#087f79}
+.dash{border-radius:26px;padding:clamp(26px,5vw,48px)}
+.dash h1{font-size:clamp(1.7rem,4vw,3rem);letter-spacing:-.035em}
+.tabs{padding:5px 0 20px;gap:10px}
+.tabs button{border-radius:13px;padding:12px 19px}
+.item{padding:20px;border-radius:17px;box-shadow:0 4px 16px #14294a08}
+.item h3{font-size:1.13rem}
+.note{border-radius:14px;padding:16px}
+.pill{border-radius:30px;padding:5px 12px}
+.field input,.field textarea,.field select{border-radius:12px;padding:12px}
+.chat{height:235px}
+.footer{margin-top:30px}
+.unloxx-assistant-launch{position:fixed;bottom:22px;right:22px;z-index:20;background:linear-gradient(130deg,#18355d,#0a7976);color:white;border:2px solid #ffffffaa;border-radius:999px;padding:14px 20px;box-shadow:0 14px 40px #0b214d55;display:flex;align-items:center;gap:9px}
+.unloxx-assistant{position:fixed;z-index:21;right:20px;bottom:85px;width:min(385px,calc(100vw - 30px));max-height:min(620px,calc(100dvh - 115px));background:white;border:1px solid #dbe5f0;border-radius:24px;box-shadow:0 24px 75px #0d203e55;display:flex;flex-direction:column;overflow:hidden}
+.unloxx-assistant[hidden],.unloxx-assistant-launch[hidden]{display:none!important}
+.assistant-top{background:linear-gradient(115deg,#10223e,#126a70);color:white;padding:17px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.assistant-top small{display:block;color:#c8e6e8}
+.assistant-top button{background:#ffffff22;padding:5px 10px}
+.assistant-messages{padding:15px;overflow-y:auto;min-height:180px;flex:1;background:#f6f9fd;display:flex;flex-direction:column;gap:10px}
+.assistant-message{max-width:90%;background:#fff;border:1px solid #e0e8f2;padding:11px 13px;border-radius:15px;white-space:pre-wrap;font-size:.9rem}
+.assistant-message.me{align-self:flex-end;background:#e2f3ef;border-color:#b9ded5}
+.assistant-chips{display:flex;gap:7px;flex-wrap:wrap;padding:10px 12px;border-top:1px solid #e3eaf2}
+.assistant-chips button{background:#eaf0f8;color:#19385d;font-size:.78rem;padding:7px 9px}
+.assistant-compose{display:flex;gap:8px;padding:12px;border-top:1px solid #e3eaf2}
+.assistant-compose input{min-width:0;flex:1;border:1px solid #cbd8e5;border-radius:12px;padding:11px}
+.assistant-compose button{padding:10px 13px}
+@media(max-width:730px){main{padding:18px 12px 75px}.hero{min-height:360px;padding:32px 25px}.hero h1{font-size:2.7rem}.card{padding:22px}.unloxx-assistant-launch{right:12px;bottom:14px}.unloxx-assistant{right:10px;bottom:75px}.hero-stats>div{min-width:110px}}
 </style></head><body>
 <header><strong>UNLO<span>XX</span></strong><nav><button class="light" data-to="home" onclick="go('home')">Home</button><button class="light" data-to="young" onclick="go('young')">Young</button><button class="light" data-to="mentors" onclick="go('mentors')">Mentors</button><button class="light" data-to="schools" onclick="go('schools')">Schools</button></nav></header>
 <main>
@@ -21,7 +67,14 @@
 <div class="panel" id="mentors-events"><h2>Discover & collaborate</h2><div class="note"><b>Mentor account:</b> These registrations belong only to the mentor demo. Young registrations are independent. You can unregister from any event below.</div><div id="mentorEventList"></div><h2>Create an event</h2><div class="card"><p class="muted">Only verified mentors may propose events in the real service. All events require review before publication.</p><div class="field"><label>Event title</label><input id="eventTitle" maxlength="70" placeholder="Career inspiration workshop"></div><div class="grid two"><div class="field"><label>Date</label><input id="eventDate" type="date"></div><div class="field"><label>Time</label><input id="eventTime" type="time"></div></div><div class="grid two"><div class="field"><label>Event format</label><select id="eventMode"><option value="online">Online</option><option value="offline">Offline</option></select></div><div class="field"><label>City</label><select id="eventCity"><option>Jamshedpur</option><option>Mumbai</option><option>Bengaluru</option></select></div></div><div class="field"><label>Venue or platform name (no private links)</label><input id="eventPlace" maxlength="90" placeholder="School auditorium / video platform"></div><div class="field"><label>Description</label><textarea id="eventDescription" maxlength="350"></textarea></div><button onclick="createEvent()">Create demo event proposal</button></div></div>
 <div class="panel" id="mentors-personal"><h2>Make UNLOXX yours</h2><div class="card"><h3>1. Choose a free theme</h3><div class="swatches"><button style="background:#253650" data-theme="navy" onclick="theme('navy')">Midnight Navy</button><button style="background:#663d50" data-theme="burgundy" onclick="theme('burgundy')">Deep Burgundy</button><button style="background:#30363d" data-theme="chalkboard" onclick="theme('chalkboard')">Chalkboard</button></div><h3>2. What should UNLOXX call you?</h3><div class="field"><label>Nickname</label><input id="mentorNick" maxlength="32" placeholder="Your Majesty"></div><div class="field"><label>Greeting style</label><select id="mentorStyle"><option>Welcome back</option><option>Great to see you</option><option>Ready to inspire</option></select></div><div class="field"><label>Birthday (optional)</label><input id="mentorBirthday" type="date"></div><div class="field"><label>Festival greeting preference</label><select id="mentorFestival"><option value="none">No festival greeting</option><option>Diwali</option><option>Holi</option><option>Eid</option><option>Christmas</option></select></div><button onclick="savePersonal('mentors')">Save my space</button><p class="muted">Saved in this browser only. Advanced colour customization is planned for later.</p></div></div></section>
 <section id="schools" class="view hide"><div class="dash"><div class="eyebrow">UNLOXX Schools · fictional school</div><h1>Welcome, Future Leaders Academy! 🏫</h1><p>Empowering students through real-world mentorship.</p></div><div class="tabs" data-role="schools"><button class="active" data-panel="schools-overview">Overview</button><button data-panel="schools-students">Students</button><button data-panel="schools-sessions">Sessions</button><button data-panel="schools-reports">Reports</button></div><div class="panel active" id="schools-overview"><div class="grid"><div class="card"><h3>Students</h3><div class="icon">128</div><p>Fictional enrolled learners</p></div><div class="card"><h3>Mentor sessions</h3><div class="icon">12</div><p>Illustrative sessions</p></div><div class="card"><h3>Engagement</h3><div class="icon">86%</div><p>Illustrative participation</p></div></div></div><div class="panel" id="schools-students"><div class="card"><h2>Student engagement</h2><p>Example class groups: Grade 7 · Grade 8 · Grade 9</p><p class="muted">No real student records are stored or displayed.</p></div></div><div class="panel" id="schools-sessions"><div class="card"><h2>Upcoming mentorship sessions</h2><p>Science discovery · Career exploration · Creative thinking</p><p class="muted">These are fictional examples.</p></div></div><div class="panel" id="schools-reports"><div class="card"><h2>Activity reports</h2><p>Session attendance, engagement, and learning activity will appear here in the full platform.</p><p class="pill">Demo dashboard</p></div></div></section>
-</main><footer class="footer">UNLOXX — Unlock what you can become. · First interactive prototype · No real accounts or messaging</footer>
+</main>
+<button id="assistantLaunch" class="unloxx-assistant-launch" onclick="toggleAssistant(true)" aria-label="Open UNLOXX demo assistant">✦ Ask UNLOXX <span aria-hidden="true">↗</span></button>
+<section id="assistantPanel" class="unloxx-assistant" role="dialog" aria-label="UNLOXX demo assistant" hidden>
+<div class="assistant-top"><div><strong>✦ UNLOXX Guide</strong><small>Interactive demo assistant · no AI connection</small></div><button onclick="toggleAssistant(false)" aria-label="Close assistant">✕</button></div>
+<div class="assistant-messages" id="assistantMessages" aria-live="polite"><div class="assistant-message">Hey, explorer! 👋 I'm the UNLOXX demo guide. Ask about events, mentors, schools, student chat, or how this prototype works.</div></div>
+<div class="assistant-chips"><button onclick="assistantQuick('How do events work?')">📅 Events</button><button onclick="assistantQuick('How do I find a mentor?')">🌟 Mentors</button><button onclick="assistantQuick('What is UNLOXX Young?')">🎓 Young</button><button onclick="assistantQuick('How does student chat work?')">💬 Chat</button></div>
+<form class="assistant-compose" onsubmit="assistantSubmit(event)"><input id="assistantInput" maxlength="240" autocomplete="off" placeholder="Ask about UNLOXX..." aria-label="Message demo guide" required><button type="submit">Send</button></form>
+</section><footer class="footer">UNLOXX — Unlock what you can become. · First interactive prototype · No real accounts or messaging</footer>
 <script>
 "use strict";
 const $=id=>document.getElementById(id),key="unloxx-demo-v1",defaults={questions:[],registrations:[],mentorRegistrations:[],collabs:[],events:[],group:"Science Explorers",chats:{direct:[{mine:false,text:"Hi! This is a fictional student chat."}],group:[{mine:false,text:"Welcome to the demo study group!"}]},personal:{young:{nick:"Explorer",birthday:"",festival:"none"},mentors:{nick:"Your Majesty",birthday:"",festival:"none",style:"Welcome back",theme:"navy"}}};
@@ -52,5 +105,22 @@ function savePersonal(role){if(role==="young"){state.personal.young={nick:$("you
 function isBirthday(s){if(!s)return false;let d=new Date(),p=s.split("-");return +p[1]===d.getMonth()+1&&+p[2]===d.getDate()}
 function greet(role){let p=state.personal[role],id=role==="young"?"young":"mentor",el=$(id+"Greeting"),head=$(id+"Head");let today=new Date(),local=today.getFullYear()+"-"+String(today.getMonth()+1).padStart(2,"0")+"-"+String(today.getDate()).padStart(2,"0");let event=events().find(e=>e.status==="approved"&&e.date===local&&state.registrations.includes(e.id));head.classList.remove("celebrate");if(isBirthday(p.birthday)){el.textContent="🎂 Happy Birthday, "+p.nick+"! 🎉";head.classList.add("celebrate")}else if(event){el.textContent="🎉 Today is "+event.title+", "+p.nick+"!";head.classList.add("celebrate")}else el.textContent=(role==="young"?"Welcome back":p.style)+", "+p.nick+"! ✨";if(role==="mentors"&&!head.classList.contains("celebrate"))applyTheme()}
 function load(){let y=state.personal.young,m=state.personal.mentors;$("youngNick").value=y.nick;$("youngBirthday").value=y.birthday;$("youngFestival").value=y.festival;$("mentorNick").value=m.nick;$("mentorBirthday").value=m.birthday;$("mentorFestival").value=m.festival;$("mentorStyle").value=m.style;applyTheme();go("home")}
+
+function toggleAssistant(open){$("assistantPanel").hidden=!open;$("assistantLaunch").hidden=open;if(open)$("assistantInput").focus()}
+function assistantReply(q){const t=q.toLowerCase();
+if(/unregister|cancel.*event|remove.*registr/.test(t))return "Open Young or Mentors → Events. When you are registered, tap Unregister beside that event. Young and mentor registrations are separate in this demo.";
+if(/event|register|workshop|webinar/.test(t))return "Open Young → Events to discover and register for demo events. Mentors → Events lets mentors register, collaborate, or propose an event. Demo registrations are saved only in this browser. Real student participation will require consent and moderation.";
+if(/mentor|question|expert|career/.test(t))return "Explore fictional mentors in Young → Mentors and submit a demo question. In the real platform, verified mentors will answer through moderated Q&A, not private student–mentor messaging.";
+if(/school|teacher|class|attendance/.test(t))return "UNLOXX Schools is a sample school dashboard for sessions, student engagement, and future permission management. The displayed statistics are illustrative, not real records.";
+if(/chat|friend|group|message/.test(t))return "Young → Student Connect demonstrates student-to-student direct and group chat. Messages stay in your browser; nobody else receives them. Real chat will need safety checks, reporting, blocking, and moderation.";
+if(/theme|nickname|personal|birthday|festival/.test(t))return "Mentors → Personalize lets you choose Midnight Navy, Deep Burgundy, or Chalkboard, plus a nickname and optional greetings. Young → My Space has its own nickname and greeting preferences.";
+if(/young|student|learn/.test(t))return "UNLOXX Young helps students explore mentors, events, and a student-only community. Try the Young navigation tabs to explore the working prototype.";
+if(/ai|bot|real|human/.test(t))return "I'm a rule-based demo guide, not a live AI model or human mentor. I can explain UNLOXX features, but I can't access accounts, send messages, or answer arbitrary questions.";
+if(/hello|hi|hey|thanks|thank you/.test(t))return "Hey! 👋 Welcome to UNLOXX. Try asking about events, mentors, schools, or student chat.";
+return "I can help you explore this UNLOXX demo. Try asking: 'How do events work?', 'How do I unregister?', 'How do I find mentors?', or 'What can schools do?' I don't have live AI access yet.";
+}
+function assistantAdd(text,mine){const d=document.createElement("div");d.className="assistant-message"+(mine?" me":"");d.textContent=text;$("assistantMessages").appendChild(d);$("assistantMessages").scrollTop=$("assistantMessages").scrollHeight}
+function assistantQuick(q){assistantAdd(q,true);assistantAdd(assistantReply(q),false)}
+function assistantSubmit(e){e.preventDefault();let input=$("assistantInput"),q=input.value.trim();if(!q)return;assistantAdd(q,true);assistantAdd(assistantReply(q),false);input.value="";input.focus()}
 load();
 </script></body></html>
