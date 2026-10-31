@@ -32,12 +32,14 @@
   .unloxx-session-actions button{flex:1}
   .unloxx-wow-layer{position:fixed;inset:0;z-index:2147483647;pointer-events:none;overflow:hidden}
   .unloxx-wow-word{position:absolute;top:43%;left:50%;font:900 clamp(2.4rem,9vw,7rem)/1 system-ui,sans-serif;letter-spacing:-.055em;will-change:transform,opacity;color:#ffcc43;-webkit-text-stroke:3px #173452;text-shadow:0 9px 0 #e58a32,0 16px 30px #0b253a70;white-space:nowrap}
-  .unloxx-wow-prop{position:absolute;top:43%;left:0;font-size:clamp(2.8rem,7vw,5rem);filter:drop-shadow(0 6px 6px #0005)}
+  .unloxx-wow-prop{position:absolute;top:43%;left:0;font-size:clamp(2.8rem,7vw,5rem);}
   .unloxx-wow-projectile{position:absolute;top:calc(43% + 21px);left:80px;width:30px;height:10px;border-radius:70% 45% 45% 70%;background:linear-gradient(90deg,#ffc33d,#fff3ac)}
   @media(prefers-reduced-motion:reduce){.unloxx-wow-word{animation:none!important}}
   `;
   document.head.appendChild(style);
+  let activeCelebration = null;
   function celebrate() {
+    if (activeCelebration) activeCelebration.remove();
     const host = document.createElement("div");
     host.className = "unloxx-wow-layer";
     host.setAttribute("role", "status");
@@ -47,10 +49,11 @@
     word.textContent = nextPraise();
     host.append(word);
     document.body.append(host);
+    activeCelebration = host;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
       word.style.left = "50%"; word.style.transform = "translate(-50%,-50%)";
-      setTimeout(() => host.remove(), 1400); return;
+      setTimeout(() => { host.remove(); if (activeCelebration === host) activeCelebration = null; }, 1400); return;
     }
     const prop = document.createElement("div");
     prop.className = "unloxx-wow-prop";
@@ -61,7 +64,13 @@
     host.append(prop, projectile);
     // A single continuous left-to-right journey: projectile morphs into WOW.
     const vw = document.documentElement.clientWidth;
-    const start = 130, change = Math.max(150, vw * .43), finish = vw + 260;
+    const start = 130;
+    const wordWidth = word.getBoundingClientRect().width;
+    const extra = Math.max(0, wordWidth - 180);
+    const change = Math.max(start + 24, vw * .43 - extra * .58);
+    const finish = vw + wordWidth + 32;
+    const reveal = extra > 0 ? .41 : .53;
+    const vanish = reveal + .035;
     const duration = 2300;
     const options = {duration, easing:"linear", fill:"forwards"};
     // Brief recoil: kick backward, return to the same resting position, then fade.
@@ -95,7 +104,7 @@
       {transform:"translate3d(" + (vw*.76) + "px,-50%,0) scale(1)",opacity:1,offset:.8},
       {transform:"translate3d(" + finish + "px,-50%,0) scale(.85)",opacity:0,offset:1}
     ],options);
-    setTimeout(() => host.remove(),duration+100);
+    setTimeout(() => { host.remove(); if (activeCelebration === host) activeCelebration = null; },duration+100);
   }
   function openSession(name) {
     activeMentor = mentors.includes(name) ? name : "Demo Mentor";
