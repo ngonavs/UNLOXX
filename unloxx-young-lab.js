@@ -21,6 +21,15 @@ const features=[
 ["young-workshops","📅 Workshops","Explore sample events and registration."],
 ["young-worldlab","✨ My World","Make your UNLOXX space your own."]
 ];
+// Pricing preview only: no checkout, payment processing, or paid access verification.
+const overview = document.getElementById("young-overview");
+if (overview) {
+  const pricing = el("div","unloxx-lab-card");
+  pricing.append(el("h3","","UNLOXX Plans · Preview"));
+  pricing.append(el("p","","Free: Ask UNLOXX AI, nickname and optional birthday. UNLOXX Plus: ₹99/month for My Future, Focus Studio, Creation Studio, Workshops and additional personalization."));
+  pricing.append(el("p","unloxx-lab-note","Pricing is planned. No payment is collected, and premium features remain available for prototype testing."));
+  overview.append(pricing);
+}
 features.forEach(([id,label])=>{const b=el("button","",label);b.type="button";b.dataset.panel=id;tabs.append(b);});
 const roadmap={
 Scientist:["Ask a research question","Plan a simple experiment","Record observations","Explain what you discovered"],
@@ -31,7 +40,7 @@ Developer:["Choose a small problem","Design the interface","Build a simple proto
 };
 const tree=section("young-skilltree","🧭 My Future · Skill Tree","A demo roadmap for exploring a career dream. Your progress stays in this browser.");
 const treeBox=el("div","unloxx-lab-card");tree.append(treeBox);
-function renderTree(){treeBox.replaceChildren(el("h3","","Choose your dream"));const select=el("select","unloxx-lab-input");Object.keys(roadmap).forEach(d=>{const o=el("option","",d);o.value=d;select.append(o)});select.value=roadmap[data.dream]?data.dream:"Scientist";select.addEventListener("change",()=>{data.dream=select.value;save();renderTree()});treeBox.append(select);const steps=el("div","unloxx-steps");roadmap[select.value].forEach((task,i)=>{const id=select.value+":"+i;const done=data.completed.includes(id);const row=el("div","unloxx-step");row.append(el("span","unloxx-step-icon",done?"✓":String(i+1)),el("span","",task));row.append(btn(done?"Completed":"Mark complete",()=>{data.completed=done?data.completed.filter(x=>x!==id):[...data.completed,id];save();renderTree();if(!done)window.unloxxCelebrate?.()},"unloxx-mini"));steps.append(row)});treeBox.append(steps);treeBox.append(el("p","unloxx-lab-note",data.completed.filter(x=>x.startsWith(select.value+":")).length+" of 4 milestones completed"))}renderTree();
+function renderTree(){treeBox.replaceChildren(el("h3","","Choose your dream"));const select=el("select","unloxx-lab-input");Object.keys(roadmap).forEach(d=>{const o=el("option","",d);o.value=d;select.append(o)});select.value=roadmap[data.dream]?data.dream:"Scientist";select.addEventListener("change",()=>{data.dream=select.value;save();renderTree()});treeBox.append(select);const steps=el("div","unloxx-steps");roadmap[select.value].forEach((task,i)=>{const id=select.value+":"+i;const done=data.completed.includes(id);const row=el("div","unloxx-step");row.append(el("span","unloxx-step-icon",done?"✓":String(i+1)),el("span","",task));row.append(btn(done?"Completed":"Mark complete",()=>{data.completed=done?data.completed.filter(x=>x!==id):[...data.completed,id];save();renderTree();if(!done)window.unloxxCelebrate?.("save")},"unloxx-mini"));steps.append(row)});treeBox.append(steps);treeBox.append(el("p","unloxx-lab-note",data.completed.filter(x=>x.startsWith(select.value+":")).length+" of 4 milestones completed"))}renderTree();
 const focus=section("young-focuslab","🌿 Focus Studio","A quiet space for short study sessions. Timer runs while this page remains open.");
 const focusCard=card(focus,"Find your flow","Choose a session length, then press Start.");
 const clock=el("div","unloxx-focus-clock","05:00");focusCard.append(clock);
@@ -50,7 +59,7 @@ const descriptionInput=el("textarea","unloxx-lab-input");descriptionInput.placeh
 createCard.append(nameInput,descriptionInput);
 const portfolio=el("div","unloxx-lab-grid");creations.append(portfolio);
 function renderPortfolio(){portfolio.replaceChildren();if(!data.creations.length)notice(portfolio,"Your private portfolio is empty. Add your first creation!");data.creations.forEach((p,i)=>{const c=card(portfolio,p.name,p.description);c.append(btn("Remove",()=>{data.creations.splice(i,1);save();renderPortfolio()},"light unloxx-mini"))})}
-createCard.append(btn("Save creation",()=>{const name=nameInput.value.trim(),description=descriptionInput.value.trim();if(!name||!description)return alert("Please enter a project name and description.");if(data.creations.length>=30)return alert("Demo limit: 30 creations.");data.creations.unshift({name,description});save();nameInput.value="";descriptionInput.value="";renderPortfolio();window.unloxxCelebrate?.()}));renderPortfolio();
+createCard.append(btn("Save creation",()=>{const name=nameInput.value.trim(),description=descriptionInput.value.trim();if(!name||!description)return alert("Please enter a project name and description.");if(data.creations.length>=30)return alert("Demo limit: 30 creations.");data.creations.unshift({name,description});save();nameInput.value="";descriptionInput.value="";renderPortfolio();window.unloxxCelebrate?.("save")}));renderPortfolio();
 const workshops=section("young-workshops","📅 Workshops & Events","Sample workshops only. No real registration or mentor connection is made.");
 const events=[["Future Makers Lab","Online","Design a small invention with a fictional mentor."],["Creative Coding Jam","Online","Explore coding and share a practice project."],["Young Innovators Meetup","Jamshedpur · Demo venue","A sample in-person innovation gathering."]];
 const eventGrid=el("div","unloxx-lab-grid");workshops.append(eventGrid);
@@ -67,6 +76,6 @@ worldCard.append(nickname,theme,birthdayLabel,festivalLabel);
 const worldPreview=el("div","unloxx-world-preview");worldCard.append(worldPreview);
 function preview(){worldPreview.dataset.theme=theme.value;worldPreview.textContent="Welcome to your world, "+(nickname.value.trim()||"Explorer")+" ✨";}
 nickname.addEventListener("input",preview);theme.addEventListener("change",preview);preview();
-worldCard.append(btn("Save my world",()=>{data.nickname=nickname.value.trim().slice(0,32)||"Explorer";data.theme=theme.value;data.birthday=birthday.value;data.festivals=festival.checked;save();preview();window.unloxxCelebrate?.()}));
+worldCard.append(btn("Save my world",()=>{data.nickname=nickname.value.trim().slice(0,32)||"Explorer";data.theme=theme.value;data.birthday=birthday.value;data.festivals=festival.checked;save();preview();window.unloxxCelebrate?.("save")}));
 notice(world,"Your birthday and preferences are stored only in this browser for this prototype.");
 })();
