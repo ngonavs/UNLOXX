@@ -39,12 +39,18 @@
     svg.setAttribute("height", String(size));
     svg.setAttribute("aria-hidden", "true");
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", "M7 28 H91 Q95 28 95 33 V46 H63 L55 54 H46 L38 87 H21 L30 51 H7 Z M54 51 H67 L60 64 H51 Z");
+    path.setAttribute("d", "M5 24 Q6 19 15 19 H89 Q95 19 95 27 V40 H70 L60 47 H42 L33 87 Q30 92 24 91 L14 87 L23 47 H8 Q5 47 5 43 Z");
     path.setAttribute("fill", "#111111");
     path.setAttribute("stroke", "#ffffff");
     path.setAttribute("stroke-width", "3");
     path.setAttribute("stroke-linejoin", "round");
     svg.appendChild(path);
+    const detail = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    detail.setAttribute("d", "M8 22 H89 V28 H8 Z M26 49 H55 L45 61 H35 L28 81 H21 Z");
+    detail.setAttribute("fill", "#727983");
+    detail.setAttribute("stroke", "#0c1015");
+    detail.setAttribute("stroke-width", "2");
+    svg.appendChild(detail);
     return svg;
   }
   function burst(button, kind) {
@@ -55,15 +61,16 @@
     // Each star begins just outside a different edge of the button.
     const count = 13;
     for (let i = 0; i < count; i++) {
-      const edge = i % 4;
-      const margin = 6;
-      const along = (Math.floor(i / 4) + 1) / ((edge === 0 ? 4 : 3) + 1);
-      const x = edge === 0 ? box.left + along * box.width : edge === 1 ? box.right + margin : edge === 2 ? box.left + along * box.width : box.left - margin;
-      const y = edge === 0 ? box.top - margin : edge === 1 ? box.top + along * box.height : edge === 2 ? box.bottom + margin : box.top + along * box.height;
-      const angle = edge === 0 ? -Math.PI / 2 : edge === 1 ? 0 : edge === 2 ? Math.PI / 2 : Math.PI;
-      const drift = angle + (Math.random() - 0.5) * 0.65;
-      const travel = 95 + Math.random() * 85;
-      const size = 15 + Math.random() * 9;
+      const perimeter = 2 * (box.width + box.height);
+      const p = (i + .5) * perimeter / count;
+      const gap = 12;
+      let x, y, nx, ny;
+      if (p < box.width) { x = box.left + p; y = box.top - gap; nx = 0; ny = -1; }
+      else if (p < box.width + box.height) { x = box.right + gap; y = box.top + p - box.width; nx = 1; ny = 0; }
+      else if (p < 2 * box.width + box.height) { x = box.right - (p - box.width - box.height); y = box.bottom + gap; nx = 0; ny = 1; }
+      else { x = box.left - gap; y = box.bottom - (p - 2 * box.width - box.height); nx = -1; ny = 0; }
+      const travel = 90 + (i % 4) * 19;
+      const size = 15 + (i % 3) * 3;
       const el = document.createElement("div");
       el.appendChild(kind === "mentor" ? pistolSvg(size) : starSvg(palette[i % palette.length], size));
       Object.assign(el.style, {
@@ -73,13 +80,13 @@
         pointerEvents: "none", filter: "drop-shadow(0 2px 3px #142d4666)"
       });
       host.appendChild(el);
-      const dx = Math.cos(drift) * travel, dy = Math.sin(drift) * travel;
+      const dx = nx * travel + ny * ((i % 3) - 1) * 23, dy = ny * travel + nx * ((i % 3) - 1) * 23;
       const duration = 950 + Math.random() * 300;
       const anim = el.animate([
-        {transform: "translate(0px, 0px) scale(.8) rotate(0deg)", opacity: 0.95, offset: 0},
-        {transform: "translate(" + dx * .35 + "px," + dy * .35 + "px) scale(1.2) rotate(35deg)", opacity: 1, offset: .35},
-        {transform: "translate(" + dx + "px," + dy + "px) scale(.65) rotate(115deg)", opacity: 0, offset: 1}
-      ], {duration, easing: "cubic-bezier(.16,.72,.3,1)", fill: "forwards"});
+        {transform: "translate(0px, 0px) scale(1)", opacity: 0.95, offset: 0},
+        {transform: "translate(" + dx * .35 + "px," + dy * .35 + "px) scale(1)", opacity: 1, offset: .35},
+        {transform: "translate(" + dx + "px," + dy + "px) scale(.7)", opacity: 0, offset: 1}
+      ], {duration, easing: "linear", fill: "forwards"});
       anim.onfinish = () => el.remove();
       setTimeout(() => el.remove(), 1500);
     }
