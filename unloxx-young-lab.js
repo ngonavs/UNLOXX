@@ -26,7 +26,7 @@ const overview = document.getElementById("young-overview");
 if (overview) {
   const pricing = el("div","unloxx-lab-card");
   pricing.append(el("h3","","UNLOXX Plans · Preview"));
-  pricing.append(el("p","","Free for everyone: basic UNLOXX AI, nickname and birthday, My Future Skill Tree, Focus Studio, Creation Studio, Workshops and Events. UNLOXX Plus: $99 USD/month for extra personalization and an enhanced AI chatbot."));
+  pricing.append(el("p","","Free for everyone: basic UNLOXX AI, nickname and birthday, My Future Skill Tree, Focus Studio, Creation Studio, Workshops and Events. UNLOXX Plus: ₹99/month for extra personalization and an enhanced AI chatbot."));
   pricing.append(el("p","unloxx-lab-note","Pricing is a preview only. No payment is collected, no paid access is enforced, and the enhanced AI chatbot is not yet implemented."));
   overview.append(pricing);
 }
