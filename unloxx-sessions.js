@@ -15,7 +15,7 @@
   .unloxx-session-actions button{flex:1}
   .unloxx-wow-layer{position:fixed;inset:0;z-index:2147483647;pointer-events:none;overflow:hidden}
   .unloxx-wow-word{position:absolute;top:43%;left:50%;font:900 clamp(4rem,15vw,9rem)/1 system-ui,sans-serif;color:#ffcc43;-webkit-text-stroke:3px #173452;text-shadow:0 9px 0 #e58a32,0 16px 30px #0b253a70;white-space:nowrap}
-  .unloxx-wow-prop{position:absolute;top:43%;left:0;font-size:clamp(2.8rem,7vw,5rem);filter:grayscale(1) brightness(.15)}
+  .unloxx-wow-prop{position:absolute;top:43%;left:0;font-size:clamp(2.8rem,7vw,5rem);filter:drop-shadow(0 6px 6px #0005)}
   .unloxx-wow-projectile{position:absolute;top:calc(43% + 21px);left:80px;width:30px;height:10px;border-radius:70% 45% 45% 70%;background:linear-gradient(90deg,#ffc33d,#fff3ac)}
   @media(prefers-reduced-motion:reduce){.unloxx-wow-word{animation:none!important}}
   `;
@@ -23,29 +23,56 @@
   function celebrate() {
     const host = document.createElement("div");
     host.className = "unloxx-wow-layer";
-    host.setAttribute("aria-label", "WOW! Achievement complete");
     host.setAttribute("role", "status");
+    host.setAttribute("aria-label", "WOW! Achievement complete");
     const word = document.createElement("div");
     word.className = "unloxx-wow-word";
     word.textContent = "WOW!";
     host.append(word);
     document.body.append(host);
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      word.style.transform = "translate(-50%,-50%)";
-      setTimeout(() => host.remove(), 1300);
-      return;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      word.style.left = "50%"; word.style.transform = "translate(-50%,-50%)";
+      setTimeout(() => host.remove(), 1400); return;
     }
     const prop = document.createElement("div");
     prop.className = "unloxx-wow-prop";
-    prop.innerHTML = '<svg width="132" height="88" viewBox="0 0 180 110" aria-hidden="true"><path d="M9 24 H163 Q171 24 171 32 V48 H114 L102 62 H88 L75 102 H44 L55 56 H9 Z" fill="#15191f" stroke="#050607" stroke-width="5" stroke-linejoin="round"/><path d="M55 56 H91 L82 72 H65 Z" fill="#4a4d52" stroke="#111" stroke-width="4"/><path d="M12 29 H166" stroke="#697078" stroke-width="4"/><path d="M45 100 L74 100" stroke="#555" stroke-width="4"/></svg>';
+    prop.innerHTML = '<svg width="132" height="88" viewBox="0 0 180 110" aria-hidden="true"><defs><linearGradient id="wowmetal" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#65717e"/><stop offset=".38" stop-color="#1c232d"/><stop offset="1" stop-color="#090c12"/></linearGradient></defs><path d="M9 24 H163 Q171 24 171 32 V48 H114 L102 62 H88 L75 102 H44 L55 56 H9 Z" fill="url(#wowmetal)" stroke="#050607" stroke-width="4" stroke-linejoin="round"/><path d="M55 56 H91 L82 72 H65 Z" fill="#3c424b" stroke="#111" stroke-width="4"/><path d="M12 29 H166" stroke="#89939d" stroke-width="3"/><path d="M45 100 L74 100" stroke="#555" stroke-width="4"/></svg>';
     prop.setAttribute("aria-hidden","true");
     const projectile = document.createElement("div");
     projectile.className = "unloxx-wow-projectile";
-    host.append(prop,projectile);
-    prop.animate([{transform:"translateX(-100%)",opacity:0},{transform:"translateX(0)",opacity:1,offset:.25},{transform:"translateX(0)",opacity:1,offset:.65},{transform:"translateX(-110%)",opacity:0}],{duration:1300,fill:"forwards"});
-    projectile.animate([{transform:"translateX(0)",opacity:0},{transform:"translateX(0)",opacity:1,offset:.22},{transform:"translateX(45vw)",opacity:1,offset:.7},{transform:"translateX(55vw) scale(2)",opacity:0}],{duration:1100,fill:"forwards"});
-    word.animate([{transform:"translate(-50%,-50%) scale(.1)",opacity:0},{transform:"translate(-50%,-50%) scale(.1)",opacity:0,offset:.45},{transform:"translate(-50%,-50%) scale(1.3)",opacity:1,offset:.72},{transform:"translate(-50%,-50%) scale(1)",opacity:1,offset:.85},{transform:"translate(-50%,-50%) scale(1.05)",opacity:0}],{duration:2300,fill:"forwards"});
-    setTimeout(()=>host.remove(),2450);
+    host.append(prop, projectile);
+    // A single continuous left-to-right journey: projectile morphs into WOW.
+    const vw = document.documentElement.clientWidth;
+    const start = 130, change = Math.max(150, vw * .43), finish = vw + 260;
+    const duration = 2300;
+    const options = {duration, easing:"linear", fill:"forwards"};
+    prop.animate([
+      {transform:"translate3d(-150px,0,0)",opacity:0,offset:0},
+      {transform:"translate3d(0,0,0)",opacity:1,offset:.12},
+      {transform:"translate3d(0,0,0)",opacity:1,offset:.27},
+      {transform:"translate3d(-150px,0,0)",opacity:0,offset:.4}
+    ],options);
+    projectile.style.left = start + "px";
+    projectile.animate([
+      {transform:"translate3d(0,0,0)",opacity:0,offset:0},
+      {transform:"translate3d(0,0,0)",opacity:0,offset:.25},
+      {transform:"translate3d(0,0,0)",opacity:1,offset:.28},
+      {transform:"translate3d(" + (change-start) + "px,0,0)",opacity:1,offset:.53},
+      {transform:"translate3d(" + (change-start+22) + "px,0,0)",opacity:0,offset:.57},
+      {transform:"translate3d(" + (change-start+22) + "px,0,0)",opacity:0,offset:1}
+    ],options);
+    word.style.left = "0px";
+    word.style.top = "calc(43% + 21px)";
+    word.style.transformOrigin = "center center";
+    word.animate([
+      {transform:"translate3d(" + change + "px,-50%,0) scale(.18)",opacity:0,offset:0},
+      {transform:"translate3d(" + change + "px,-50%,0) scale(.18)",opacity:0,offset:.53},
+      {transform:"translate3d(" + change + "px,-50%,0) scale(.75)",opacity:1,offset:.61},
+      {transform:"translate3d(" + (vw*.76) + "px,-50%,0) scale(1)",opacity:1,offset:.8},
+      {transform:"translate3d(" + finish + "px,-50%,0) scale(.85)",opacity:0,offset:1}
+    ],options);
+    setTimeout(() => host.remove(),duration+100);
   }
   function openSession(name) {
     activeMentor = mentors.includes(name) ? name : "Demo Mentor";
