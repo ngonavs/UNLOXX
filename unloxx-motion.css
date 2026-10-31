@@ -1,16 +1,42 @@
-/* Motion enhancement: gentle, accessible, GPU-friendly */
-@keyframes unloxx-enter{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-@keyframes unloxx-glow{0%,100%{opacity:.35;transform:translateY(0)}50%{opacity:.65;transform:translateY(-8px)}}
-@keyframes unloxx-msg{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
-.hero,#young .young-future-welcome,#young .young-achievement-hub{animation:unloxx-enter .7s cubic-bezier(.2,.8,.2,1) both}
+/* UNLOXX motion system: transform/opacity animations, minimal compositing. */
+:root{--motion-ease:cubic-bezier(.22,1,.36,1);--motion-fast:180ms;--motion-normal:320ms}
+@keyframes unloxx-enter{from{opacity:0;transform:translate3d(0,12px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes unloxx-msg{from{opacity:0;transform:translate3d(0,7px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes unloxx-orbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{overflow-x:hidden}
+.hero,#young .young-future-welcome{animation:unloxx-enter 650ms var(--motion-ease) both}
 .hero{position:relative;isolation:isolate;overflow:hidden}
-.hero:after{content:"✦";position:absolute;right:7%;top:3%;font-size:clamp(4rem,12vw,9rem);color:#ffffff16;pointer-events:none;z-index:-1;animation:unloxx-glow 7s ease-in-out infinite}
-#young .young-growth-card,.grid>.card{transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease}
-@media(hover:hover){#young .young-growth-card:hover,.grid>.card:hover{transform:translateY(-4px);box-shadow:0 16px 32px #1c50451c}}
-#young .young-achievement-fill{transition:width .8s cubic-bezier(.2,.8,.2,1)}
-.assistant-message{white-space:pre-line;animation:unloxx-msg .25s ease-out both}
+.hero::after{content:"✦";position:absolute;right:7%;top:3%;font-size:clamp(4rem,12vw,9rem);color:#ffffff14;pointer-events:none;z-index:-1}
+button,a,.card,.item,#young .young-growth-card{ -webkit-tap-highlight-color:transparent }
+button{transition:transform var(--motion-fast) ease,background-color var(--motion-fast) ease,color var(--motion-fast) ease,border-color var(--motion-fast) ease;touch-action:manipulation}
+@media(hover:hover) and (pointer:fine){
+ button:not(:disabled):hover{transform:translate3d(0,-2px,0)}
+ .card:hover,.item:hover,#young .young-growth-card:hover{transform:translate3d(0,-3px,0)}
+}
+button:not(:disabled):active{transform:scale(.975)}
+.card,.item,#young .young-growth-card{transition:transform var(--motion-normal) var(--motion-ease),border-color var(--motion-normal) ease}
+.tabs button{transition:transform var(--motion-fast) ease,background-color var(--motion-fast) ease,color var(--motion-fast) ease,border-color var(--motion-fast) ease}
+.panel.active{animation:unloxx-enter 280ms var(--motion-ease) both}
+.assistant-message,.bubble{white-space:pre-line;animation:unloxx-msg 220ms var(--motion-ease) both}
+#young .young-achievement-fill{transition:width 550ms var(--motion-ease)}
 .unloxx-ai-chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
 .unloxx-ai-chips button{border:1px solid #a7d6c9;border-radius:999px;background:#e7f5ee;color:#1d615a;padding:8px 12px;font-size:.83rem;min-height:40px}
 .unloxx-ai-chips button:hover{background:#d5efe4}
 .unloxx-ai-disclosure{font-size:.75rem;color:#58746d;margin:5px 0 12px}
-@media(prefers-reduced-motion:reduce){.hero,.hero:after,#young .young-future-welcome,#young .young-achievement-hub,.assistant-message{animation:none!important}#young .young-growth-card,.grid>.card,#young .young-achievement-fill{transition:none!important}}
+.unloxx-reveal{opacity:0;transform:translate3d(0,14px,0);transition:opacity 580ms var(--motion-ease),transform 580ms var(--motion-ease)}
+.unloxx-reveal.unloxx-visible{opacity:1;transform:translate3d(0,0,0)}
+/* Keep dynamic, frequently replaced content visible without expensive observers. */
+@media(max-width:730px){
+ html{scroll-padding-top:18px}
+ .hero,#young .young-future-welcome{animation-duration:420ms}
+ .panel.active{animation-duration:220ms}
+ .card,.item,#young .young-growth-card{transition-duration:180ms}
+ header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+ .unloxx-reveal{opacity:1!important;transform:none!important}
+}
+.focus .unloxx-reveal{opacity:1!important;transform:none!important}
