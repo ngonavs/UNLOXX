@@ -81,8 +81,8 @@
       {transform:"translate3d(0,0,0)",opacity:0,offset:0},
       {transform:"translate3d(0,0,0)",opacity:0,offset:.25},
       {transform:"translate3d(0,0,0)",opacity:1,offset:.28},
-      {transform:"translate3d(" + (change-start) + "px,0,0)",opacity:1,offset:.53},
-      {transform:"translate3d(" + (change-start+22) + "px,0,0)",opacity:0,offset:.57},
+      {transform:"translate3d(" + (change-start) + "px,0,0)",opacity:1,offset:reveal},
+      {transform:"translate3d(" + (change-start+22) + "px,0,0)",opacity:0,offset:vanish},
       {transform:"translate3d(" + (change-start+22) + "px,0,0)",opacity:0,offset:1}
     ],options);
     word.style.left = "0px";
@@ -90,8 +90,8 @@
     word.style.transformOrigin = "center center";
     word.animate([
       {transform:"translate3d(" + change + "px,-50%,0) scale(.18)",opacity:0,offset:0},
-      {transform:"translate3d(" + change + "px,-50%,0) scale(.18)",opacity:0,offset:.53},
-      {transform:"translate3d(" + change + "px,-50%,0) scale(.75)",opacity:1,offset:.61},
+      {transform:"translate3d(" + change + "px,-50%,0) scale(.18)",opacity:0,offset:reveal},
+      {transform:"translate3d(" + change + "px,-50%,0) scale(.75)",opacity:1,offset:reveal+.07},
       {transform:"translate3d(" + (vw*.76) + "px,-50%,0) scale(1)",opacity:1,offset:.8},
       {transform:"translate3d(" + finish + "px,-50%,0) scale(.85)",opacity:0,offset:1}
     ],options);
