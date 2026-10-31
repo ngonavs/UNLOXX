@@ -1,0 +1,25 @@
+/* Young Lab: compact, responsive, no continuous visual animations */
+.unloxx-lab{max-width:1100px;margin:auto;padding:8px 0 35px}
+.unloxx-lab>h2{font-size:clamp(1.55rem,3vw,2.2rem);letter-spacing:-.035em;color:#14283f;margin:10px 0 4px}
+.unloxx-lab-sub{color:#5a707b;margin:0 0 20px}
+.unloxx-lab-card{background:#fff;border:1px solid #dce7e8;border-radius:20px;padding:clamp(16px,3vw,25px);margin:12px 0;box-shadow:0 7px 22px #122c4210;min-width:0}
+.unloxx-lab-card h3{margin:0 0 8px;color:#163348}
+.unloxx-lab-card p{color:#526872;line-height:1.55}
+.unloxx-lab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:15px}
+.unloxx-lab-input{display:block;width:100%;max-width:460px;min-height:45px;margin:12px 0;padding:11px 13px;border-radius:12px;border:1px solid #b7cbd0;background:#fff;color:#14283f;font:inherit}
+.unloxx-steps{display:grid;gap:10px;margin:18px 0}
+.unloxx-step{display:flex;align-items:center;gap:12px;background:#f3f8f7;padding:12px;border-radius:14px;flex-wrap:wrap}
+.unloxx-step>span:nth-child(2){flex:1;min-width:120px}
+.unloxx-step-icon{display:grid;place-items:center;background:#dceee9;color:#156b65;border-radius:50%;width:34px;height:34px;font-weight:800}
+.unloxx-mini{font-size:.85rem;padding:8px 12px}
+.unloxx-lab-note{font-size:.87rem;color:#637b83!important}
+.unloxx-focus-clock{font-size:clamp(3.5rem,12vw,6rem);font-weight:850;letter-spacing:-.06em;color:#137a73;text-align:center;font-variant-numeric:tabular-nums;padding:12px}
+.unloxx-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.unloxx-controls .unloxx-lab-input{width:auto;margin:0}
+.unloxx-world-preview{padding:28px 16px;border-radius:18px;background:#e2f0e9;color:#174f4a;font-size:clamp(1.15rem,3vw,1.8rem);font-weight:800;text-align:center;margin:15px 0}
+.unloxx-world-preview[data-theme=navy]{background:#142743;color:#f0cf93}
+.unloxx-world-preview[data-theme=sunset]{background:#ffebdd;color:#9b4c5a}
+.unloxx-check{display:flex;align-items:center;gap:10px;margin:12px 0}
+.unloxx-check input{width:19px;height:19px}
+.tabs[data-role=young]{scrollbar-width:thin}
+@media(max-width:700px){.unloxx-lab-card{padding:15px}.unloxx-step{align-items:flex-start}}
