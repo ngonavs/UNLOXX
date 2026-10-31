@@ -24,3 +24,10 @@
 #young .young-growth-panel>p.muted{max-width:700px}
 @media(max-width:640px){#young .young-achievement-stats{grid-template-columns:repeat(2,minmax(0,1fr))}#young .young-achievement-hub{border-radius:19px}#young .young-achievement-heading{align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){#young .young-achievement-fill,#young .young-growth-card{transition:none!important;transform:none!important}}
+
+/* Keep key Young destinations discoverable on phones and tablets. */
+#young .tabs{display:flex!important;flex-wrap:wrap!important;overflow:visible!important;white-space:normal!important;gap:9px!important;padding-bottom:12px!important}
+#young .tabs button{flex:0 1 auto!important;white-space:normal!important;min-height:44px}
+#young .tabs button[data-panel="young-circle"],#young .tabs button[data-panel="young-dreams"],#young .tabs button[data-panel="young-quests"]{border:2px solid #398c80!important;background:#e2f3eb!important;color:#1b5c56!important;font-weight:800!important}
+#young .tabs button.active[data-panel="young-circle"],#young .tabs button.active[data-panel="young-dreams"],#young .tabs button.active[data-panel="young-quests"]{background:#237e75!important;color:#fff!important}
+@media(max-width:650px){#young .tabs button{font-size:.85rem!important;padding:10px 12px!important}}
