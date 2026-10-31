@@ -1,0 +1,64 @@
+/* UNLOXX visual system v3 — crisp, calm, editorial and responsive. */
+:root{--u-ink:#16253a;--u-muted:#63748b;--u-teal:#127b77;--u-border:#dce8eb;--u-radius:24px}
+body{background:radial-gradient(ellipse 70% 38% at 95% -10%,#e1f4f0 0%,transparent 100%),radial-gradient(ellipse 55% 42% at -12% 36%,#e9eefb 0%,transparent 100%),#f8fafc;color:var(--u-ink);-webkit-font-smoothing:antialiased}
+header{background:#101e34!important;border-bottom:1px solid #ffffff20;box-shadow:0 4px 16px #101e3418}
+header strong{font-weight:900;letter-spacing:.095em}
+header nav button{border-radius:999px!important}
+main{max-width:1260px}
+.hero{background:radial-gradient(circle at 88% 14%,#3c777f77,transparent 36%),radial-gradient(circle at 62% 130%,#4266a855,transparent 45%),linear-gradient(125deg,#111d34,#1a3651 74%)!important;border-radius:32px;min-height:430px;box-shadow:0 24px 55px #152d4930;position:relative}
+.hero::before{content:"";position:absolute;inset:12px;border:1px solid #ffffff1c;border-radius:23px;pointer-events:none}
+.hero .eyebrow{background:#e9c98b16!important;border:1px solid #e9c98b60!important;color:#f7dca4;letter-spacing:.14em}
+.hero h1{font-weight:850;letter-spacing:-.065em;line-height:1.02;text-wrap:balance;max-width:850px}
+.hero p{max-width:610px;line-height:1.8;color:#e3eefa}
+.hero button{margin-top:10px}
+button{font-weight:750;letter-spacing:-.01em}
+button.gold{background:#efd397;color:#15253a}
+button.teal{background:#177d78;color:white}
+button.light{background:#eef5f7;color:#1c3a4c}
+.hero-stats{gap:14px}
+.hero-stats>div{background:#ffffffd9;border:1px solid #e1ebf1;border-radius:20px;box-shadow:0 7px 22px #16334b0c}
+.hero-stats b{font-weight:850;letter-spacing:-.05em;color:#176f71}
+.hero-stats span{color:#63748b}
+#home>h2{font-size:clamp(1.6rem,3vw,2.15rem);letter-spacing:-.045em;margin-top:30px}
+.grid{gap:18px}
+.card{background:#ffffffed!important;border:1px solid #e1e9ed!important;border-radius:23px!important;box-shadow:0 7px 24px #142e4b0b!important;position:relative}
+.card .icon{background:linear-gradient(140deg,#e2f2ee,#eaf1fa)!important;border:1px solid #d9eae8;border-radius:19px}
+.card h3{font-size:1.2rem;letter-spacing:-.035em}
+.card p{line-height:1.7;color:#64748b}
+#home .card{padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;align-items:flex-start}
+#home .card p{flex:1}
+#home .card button{margin-top:auto}
+.dash{background:radial-gradient(circle at 94% 0%,#4c8e8966,transparent 37%),linear-gradient(115deg,#14263e,#244c65)!important;border:1px solid #ffffff25;border-radius:28px!important;box-shadow:0 16px 34px #193a5423}
+.dash h1{font-weight:850;letter-spacing:-.05em}
+.tabs{gap:8px}
+.tabs button{border-radius:999px!important;background:#fff;color:#314b61;border:1px solid #dce6ea;box-shadow:none!important}
+.tabs button.active{background:#176f70!important;color:#fff!important;border-color:#176f70!important}
+.panel.active{transform-origin:top center}
+.item{border:1px solid #e1e9ed;border-radius:19px!important;background:#fff;box-shadow:0 4px 15px #18314c08}
+.item::before{width:3px;border-radius:3px 0 0 3px}
+.pill{background:#eaf4f1;color:#246c67}
+.field input,.field textarea,.field select,.young-growth-input{border:1px solid #cbdcde;border-radius:13px;background:#fff;min-height:44px}
+.field input:focus,.field textarea:focus,.field select:focus{outline:3px solid #1e8c7830;outline-offset:1px}
+.note,.event-help{background:#edf7f3;border:1px solid #cce5db;border-left:4px solid #218a7a;border-radius:15px}
+.unloxx-assistant{border-radius:25px;border:1px solid #d8e6e8;box-shadow:0 25px 70px #10243e3d}
+.assistant-top{background:linear-gradient(120deg,#142c47,#147a76)}
+.unloxx-assistant-launch{background:linear-gradient(115deg,#142e4d,#137d77);box-shadow:0 12px 30px #123d4b40}
+#young .young-future-welcome{border-radius:25px}
+#young .young-achievement-hub{border-radius:25px}
+#young .young-growth-card{border-radius:20px}
+.footer{border-top:1px solid #dbe6e9}
+@media(max-width:760px){
+ header{padding-left:16px;padding-right:16px}
+ main{padding-left:14px;padding-right:14px}
+ .hero{min-height:340px;border-radius:24px;padding:30px 24px!important}
+ .hero::before{inset:8px;border-radius:18px}
+ .hero h1{font-size:clamp(2.25rem,9vw,3.5rem)}
+ .hero p{font-size:1rem;line-height:1.65}
+ .hero button{display:inline-flex;margin-top:8px;min-height:46px}
+ .hero-stats>div{padding:16px}
+ .card{padding:22px!important}
+ .mobile-app-nav{background:#fffffff2;border-top:1px solid #dce7e9;box-shadow:0 -8px 25px #122d3c15}
+ .mobile-app-nav button.selected{background:#e4f3ee;color:#126e6a}
+ .tabs button{min-height:44px}
+}
+@media(prefers-reduced-motion:reduce){.hero,.card,.dash{scroll-behavior:auto}}
