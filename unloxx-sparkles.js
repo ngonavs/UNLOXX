@@ -32,7 +32,22 @@
     svg.appendChild(path);
     return svg;
   }
-  function burst(button) {
+  function pistolSvg(size) {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("width", String(size));
+    svg.setAttribute("height", String(size));
+    svg.setAttribute("aria-hidden", "true");
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", "M7 28 H91 Q95 28 95 33 V46 H63 L55 54 H46 L38 87 H21 L30 51 H7 Z M54 51 H67 L60 64 H51 Z");
+    path.setAttribute("fill", "#111111");
+    path.setAttribute("stroke", "#ffffff");
+    path.setAttribute("stroke-width", "3");
+    path.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(path);
+    return svg;
+  }
+  function burst(button, kind) {
     if (reduce.matches) return;
     const box = button.getBoundingClientRect();
     if (!box.width || !box.height) return;
@@ -42,7 +57,7 @@
     for (let i = 0; i < count; i++) {
       const edge = i % 4;
       const margin = 6;
-      const along = 0.2 + Math.random() * 0.6;
+      const along = (Math.floor(i / 4) + 1) / ((edge === 0 ? 4 : 3) + 1);
       const x = edge === 0 ? box.left + along * box.width : edge === 1 ? box.right + margin : edge === 2 ? box.left + along * box.width : box.left - margin;
       const y = edge === 0 ? box.top - margin : edge === 1 ? box.top + along * box.height : edge === 2 ? box.bottom + margin : box.top + along * box.height;
       const angle = edge === 0 ? -Math.PI / 2 : edge === 1 ? 0 : edge === 2 ? Math.PI / 2 : Math.PI;
@@ -50,7 +65,7 @@
       const travel = 30 + Math.random() * 34;
       const size = 15 + Math.random() * 9;
       const el = document.createElement("div");
-      el.appendChild(starSvg(palette[i % palette.length], size));
+      el.appendChild(kind === "mentor" ? pistolSvg(size) : starSvg(palette[i % palette.length], size));
       Object.assign(el.style, {
         position: "absolute", left: x + "px", top: y + "px",
         width: size + "px", height: size + "px",
@@ -73,6 +88,9 @@
     const target = event.target;
     if (!(target instanceof Element)) return;
     const button = target.closest(selector);
-    if (button && !button.disabled) burst(button);
+    if (!button || button.disabled) return;
+    const portal = button.closest("#young, #mentors");
+    if (portal?.id === "young") burst(button, "young");
+    else if (portal?.id === "mentors") burst(button, "mentor");
   }, true);
 })();
