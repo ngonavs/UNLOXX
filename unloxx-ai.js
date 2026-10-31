@@ -25,7 +25,7 @@ if(/(hello|hi|hey|thanks|thank you)/i.test(s))return "Hey, future changemaker! �
 return "I can help you explore UNLOXX and build a small learning plan. Try asking about your dream, coding, science, art, business, daily quests, mentors, or My Circle. This is a smart offline demo, not a live AI service."}
 window.unloxxSmartReply=reply;
 if(typeof window.assistantReply==="function")window.assistantReply=reply;
-const style=document.createElement("link");style.rel="stylesheet";style.href="./unloxx-motion.css";document.head.appendChild(style);
+/* Motion stylesheet loads in the document head to prevent layout flashes. */
 function enhance(){const input=document.getElementById("assistantInput");if(!input)return;input.maxLength=500;input.setAttribute("aria-label","Ask the UNLOXX smart guide");const host=input.closest("form")||input.parentElement;if(!host||document.getElementById("unloxx-ai-chips"))return;const chips=document.createElement("div");chips.id="unloxx-ai-chips";chips.className="unloxx-ai-chips";for(const prompt of ["Plan my dream","How do mentors work?","My daily quest"]){const b=document.createElement("button");b.type="button";b.textContent=prompt;b.addEventListener("click",()=>{if(typeof window.assistantQuick==="function")window.assistantQuick(prompt);else{input.value=prompt;input.focus()}});chips.appendChild(b)}host.parentNode.insertBefore(chips,host);const hint=document.createElement("p");hint.className="unloxx-ai-disclosure";hint.textContent="✦ Smart offline guide · rule-based suggestions · no live AI connection";chips.after(hint)}
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",enhance);else enhance();
 })();
