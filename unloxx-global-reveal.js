@@ -10,7 +10,7 @@ function visible(el){if(!el.isConnected)return false;const portal=el.closest('.v
 function scan(){for(const id of portals){const portal=document.getElementById(id);if(!portal||portal.classList.contains('hide'))continue;let n=0;for(const el of portal.querySelectorAll(selector)){if(seen.has(el)||!visible(el))continue;if(el.closest('.uh-reveal'))continue; // Homepage 3.0 already owns this reveal.
 if(el.matches('.f2-card')&&el.closest('.f2-shield'))continue;
 seen.add(el);el.classList.add('ux-reveal');el.style.setProperty('--ux-delay',Math.min(n++%4,3)*65+'ms');
-const rect=el.getBoundingClientRect();if(rect.bottom<0||rect.top>window.innerHeight+30){io.observe(el)}else{io.observe(el);/* observer reveals on next frame without hiding user-visible content */requestAnimationFrame(()=>{if(visible(el)&&el.getBoundingClientRect().top<innerHeight&&el.getBoundingClientRect().bottom>0){el.classList.add('ux-revealed');io.unobserve(el)}})}
+io.observe(el);
 }}}
 let pending=false;function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;scan()})}
 const root=document.querySelector('main');if(root){const mo=new MutationObserver(schedule);mo.observe(root,{childList:true,subtree:true,attributes:true,attributeFilter:['class']})}
