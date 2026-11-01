@@ -1,6 +1,13 @@
 /* Young navigation: Home shortcut, collapsible on scroll, accessible restore handle. */
 (()=>{'use strict';const root=document.getElementById('young');const bar=root?.querySelector('.tabs[data-role="young"]');if(!bar)return;
 const header=document.getElementById('youngHead');const overview=document.getElementById('young-overview');if(!header||!overview)return;
+// Hide older duplicate navigation entries while retaining their panels for compatibility.
+const duplicates=[['young-focuslab','young-focus'],['young-create-lab','young-create']];
+for(const [legacy,modern] of duplicates){if(document.getElementById(modern)){const old=bar.querySelector('button[data-panel="'+legacy+'"]');if(old)old.hidden=true}}
+const focusButtons=Array.from(bar.querySelectorAll('button[data-panel]')).filter(b=>/focus studio/i.test(b.textContent||''));
+focusButtons.forEach(b=>{if(b.dataset.panel!=='young-focus')b.hidden=true});
+const createButtons=Array.from(bar.querySelectorAll('button[data-panel]')).filter(b=>/creation studio/i.test(b.textContent||''));
+createButtons.forEach(b=>{if(b.dataset.panel!=='young-create')b.hidden=true});
 const home=document.createElement('button');home.type='button';home.textContent='⌂ Home';home.dataset.panel='young-overview';home.className='unloxx-home-tab';bar.prepend(home);
 const arrow=document.createElement('button');arrow.type='button';arrow.className='unloxx-nav-handle';arrow.textContent='❯';arrow.setAttribute('aria-label','Show Young navigation');arrow.setAttribute('aria-expanded','false');root.append(arrow);
 let collapsed=false,lastY=window.scrollY,manual=false;
