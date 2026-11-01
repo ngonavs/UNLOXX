@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ngonavs.github.io/UNLOXX/sitemap.xml
