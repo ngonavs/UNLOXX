@@ -1,0 +1,14 @@
+/* Phase 1: predictable navigation and touch targets on narrow screens. */
+.tabs[data-role] { display:flex; flex-wrap:nowrap; overflow-x:auto; overscroll-behavior-inline:contain; scrollbar-width:thin; scroll-padding-inline:12px; -webkit-overflow-scrolling:touch; gap:8px; padding-block:8px; }
+.tabs[data-role] > button { flex:0 0 auto; min-height:44px; white-space:nowrap; }
+.tabs[data-role] > button[aria-selected="true"] { outline:2px solid #267c78; outline-offset:1px; }
+.tabs[data-role] > button:focus-visible { outline:3px solid #a16a17; outline-offset:2px; }
+.panel[hidden] { display:none !important; }
+@media (max-width:640px) {
+  .tabs[data-role] { margin-inline:-12px; padding-inline:12px; }
+  .tabs[data-role] > button { padding:11px 14px; }
+  .unloxx-lab-card { overflow-wrap:anywhere; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .tabs[data-role], .tabs[data-role] > button, .panel { scroll-behavior:auto !important; animation:none !important; transition:none !important; }
+}
