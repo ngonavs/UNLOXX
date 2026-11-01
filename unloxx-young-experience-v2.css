@@ -1,0 +1,26 @@
+/* Young Experience v2 */
+#young .ux-dashboard{margin:16px 0 20px;padding:22px;border-radius:24px;background:linear-gradient(135deg,#122e49,#1b555a);color:#fff;box-shadow:0 16px 38px #132f4026}
+#young .ux-dashboard h2{margin:8px 0;color:#fff;font-size:clamp(1.4rem,4vw,2.2rem)}#young .ux-dashboard .muted{color:#e1eeec}
+#young .ux-kicker{font-size:.76rem;font-weight:850;letter-spacing:.16em;color:#4ddac9}
+#young .ux-progress{height:13px;border-radius:50px;background:#ffffff35;overflow:hidden;margin:14px 0}
+#young .ux-progress span{height:100%;display:block;background:linear-gradient(90deg,#5fe0c4,#f9da81);border-radius:50px;transition:width .4s}
+#young .ux-badges{display:flex;gap:8px;flex-wrap:wrap}
+#young .ux-badge{font-size:.83rem;padding:7px 12px;border:1px solid #6ad1be;border-radius:50px;background:#ffffff1c}
+#young .ux-badge.locked{opacity:.48;filter:grayscale(1)}
+#young .ux-feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:15px;margin:20px 0}
+#young .ux-card,#young .ux-feature{padding:20px;border:1px solid #c9dedb;border-radius:20px;background:linear-gradient(155deg,#fff,#f2faf7);box-shadow:0 8px 25px #142f3010}
+#young .ux-card h3{margin:0 0 10px;color:#163c47}#young .ux-card p{min-height:28px}
+#young .ux-card button,#young .ux-feature button{margin:7px 7px 4px 0}
+#young .ux-panel>h2{font-size:clamp(1.8rem,5vw,2.5rem);color:#173e49;margin:7px 0}
+#young .ux-label{display:block;margin:16px 0 6px;font-weight:750}
+#young .ux-input{display:block;width:100%;padding:13px;border-radius:12px;border:1px solid #9dbeb8;background:white;color:#21333c}
+#young .ux-emphasis{font-weight:700;color:#226b63}
+#young .ux-tree{min-height:390px;display:flex;align-items:center;flex-direction:column;justify-content:center;border-radius:25px;margin:20px 0;padding:20px;background:radial-gradient(circle at 50% 30%,#e0f8e7,#c9e6e0 60%,#e8f1df);border:2px solid #a8d7ba}
+#young .ux-tree-sun{font-weight:800;color:#547d48}#young .ux-tree-crown{font-size:7rem;line-height:1.4;filter:drop-shadow(0 8px 8px #386a4b35)}
+#young .ux-tree-branches{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;max-width:620px}
+#young .ux-tree-branch{padding:9px 13px;background:#fffef5;border:2px solid #76b49b;border-radius:30px;color:#285944;font-weight:750;font-size:.9rem}
+#young .ux-tree-roots{margin-top:30px;font-size:.8rem;letter-spacing:.09em;color:#376c54;font-weight:800;text-align:center}
+#young .ux-clock{text-align:center;font-size:clamp(3rem,12vw,6rem);font-weight:850;letter-spacing:.04em;color:#1c6b66;font-variant-numeric:tabular-nums;padding:20px 0}
+#young .tabs{scroll-margin-top:100px}
+@media(max-width:620px){#young .ux-dashboard{padding:16px}#young .ux-feature{padding:14px}#young .ux-tree-crown{font-size:5rem}}
+@media(prefers-reduced-motion:reduce){#young .ux-progress span{transition:none}}
