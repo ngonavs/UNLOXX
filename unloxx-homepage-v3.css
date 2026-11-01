@@ -12,6 +12,6 @@
 @media(max-width:780px){#home .uh-discover-grid,#home .uh-experience-grid,#home .uh-steps{grid-template-columns:1fr 1fr}#home .uh-section{padding:22px}#home .uh-hero-art{opacity:.5}}@media(max-width:540px){#home .uh-discover-grid,#home .uh-experience-grid,#home .uh-steps{grid-template-columns:1fr}#home .uh-empty{align-items:flex-start}#home .uh-footer{display:block}#home .uh-footer nav{margin:15px 0}#home .hero{min-height:0!important}}
 @media(prefers-reduced-motion:reduce){#home .uh-reveal{opacity:1;transform:none}#home .uh-hero-art *,#home.unloxx-home-v3 .hero{animation:none!important}#home .uh-portal,#home .uh-experience-grid article,#home .uh-discover-grid article{transition:none}}
 /* Navigation moves behind the opaque global header, not across its front. */
-body>header{position:relative;z-index:100;background:#101e35;isolation:isolate}
+body>header{z-index:100;background:#101e35;backdrop-filter:none;isolation:isolate}
 #young .tabs[data-role="young"]{z-index:1}
 #young .unloxx-nav-handle{z-index:101}
