@@ -5,3 +5,6 @@
 #young .tabs[data-role="young"]{position:relative;top:auto;transform:none!important;opacity:1!important;pointer-events:auto!important;transition:none;scroll-margin-top:12px;backdrop-filter:none}
 #young .unloxx-nav-handle[hidden]{display:none!important}
 #young .unloxx-nav-handle:not([hidden]){display:block}
+
+/* Screenshot-approved location: left edge directly below UNLOXX brand header. */
+#young .unloxx-nav-handle{left:0;right:auto;top:calc(var(--unloxx-site-header-height,72px) + 8px);border-radius:0 12px 12px 0;padding:12px 10px;min-width:40px;min-height:46px;font-size:19px;line-height:1;touch-action:manipulation}
