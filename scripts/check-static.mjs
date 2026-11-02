@@ -38,8 +38,13 @@ const portfolioJs = existsSync(join(root, 'unloxx-student-portfolio.js'));
 const portfolioCss = existsSync(join(root, 'unloxx-student-portfolio.css'));
 check(portfolioJs === portfolioCss, 'Portfolio JavaScript and stylesheet must be added together');
 if (portfolioJs) {
-  check(index.includes('./unloxx-student-portfolio.js'), 'Portfolio JavaScript is not loaded by index.html');
-  check(index.includes('./unloxx-student-portfolio.css'), 'Portfolio stylesheet is not loaded by index.html');
+  // Legacy portfolio assets remain in the repository but are intentionally not loaded by the real-auth homepage.
+  // Require paired references only when the legacy portfolio is intentionally activated.
+  const portfolioActivated = index.includes('./unloxx-student-portfolio.js') || index.includes('./unloxx-student-portfolio.css');
+  if (portfolioActivated) {
+    check(index.includes('./unloxx-student-portfolio.js'), 'Portfolio JavaScript is not loaded by index.html');
+    check(index.includes('./unloxx-student-portfolio.css'), 'Portfolio stylesheet is not loaded by index.html');
+  }
   const rankList = file => read(file).match(/const ranks=(\[[^;]+\]);/)?.[1] ?? null;
   const achievements = rankList('unloxx-achievements.js');
   const portfolio = rankList('unloxx-student-portfolio.js');
