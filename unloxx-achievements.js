@@ -1,6 +1,6 @@
 /* UNLOXX Young Achievements: browser-only demo progress, no server-verified rewards. */
 (()=>{'use strict';const root=document.getElementById('young'),bar=root?.querySelector('.tabs[data-role="young"]');if(!root||!bar)return;
-const ranks=[['🌱','Rookie',0],['🧭','Explorer',100],['⚔️','Adventurer',300],['💎','Achiever',600],['🔮','Mastermind',1000],['👑','Legend',1600]];
+const ranks=[['🌱','Newbie',0],['🪵','Rookie',100],['🧭','Explorer',250],['🗺️','Traveler',450],['⚔️','Adventurer',700],['💎','Achiever',1000],['🔥','Dream Crusher',1400],['🧠','Mastermind',1900],['🔮','Grand Mastermind',2500],['👑','Legends',3200],['🏆','Master Legends',4000]];
 const KEY='unloxx-achievements-demo-v1',GROWTH='unloxx-young-growth-demo-v1';
 let state={earned:[],questDays:[],questCount:0,seenQuests:[]};try{state={...state,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{};if(!Array.isArray(state.earned))state.earned=[];if(!Array.isArray(state.questDays))state.questDays=[];if(!Array.isArray(state.seenQuests))state.seenQuests=[];
 const badges=[['first','🌱','First Steps','Complete your first Daily Quest'],['three','⚡','Quest Starter','Complete three different Daily Quests'],['days','🔥','Steady Explorer','Complete a quest on three different days'],['dream','🌌','Dream Chaser','Save your first dream'],['circle','🤝','Friendly Explorer','Try a demo friend request'],['collector','👑','Badge Collector','Unlock five other badges']];
