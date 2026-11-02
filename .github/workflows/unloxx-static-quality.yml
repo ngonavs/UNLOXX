@@ -1,0 +1,20 @@
+name: UNLOXX static quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Validate browser assets and JavaScript
+        run: |
+          node --version
+          node scripts/check-static.mjs
