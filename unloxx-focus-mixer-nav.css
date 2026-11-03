@@ -26,3 +26,13 @@
 #young .f2-sound-tile button{align-self:stretch}
 #young .f2-sound-active{background:linear-gradient(135deg,#1b8e76,#1d6b6a)!important;outline:2px solid #8ff0d6}
 @media(max-width:550px){#young .f2-sound-grid{grid-template-columns:1fr 1fr;gap:8px}#young .f2-sound-tile{padding:12px 10px}#young .f2-sound-toolbar{flex-wrap:wrap}#young .f2-sound-toolbar input{flex:1 1 150px}}
+
+/* Permanent grouped sound sections, no filter tabs */
+#young .f2-sounds>.f2-sound-grid{display:block;margin:12px 0}
+#young .f2-sound-section{padding:16px 0 22px;border-bottom:1px solid rgba(179,229,220,.17)}
+#young .f2-sound-section:last-child{border-bottom:0}
+#young .f2-sound-section[hidden]{display:none!important}
+#young .f2-sound-section h4{font-size:1.05rem;color:#eafcf9;margin:0 0 14px;font-weight:850;letter-spacing:-.02em}
+#young .f2-sound-section>.f2-sound-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#young .f2-sound-tile a{overflow-wrap:anywhere}
+@media(max-width:460px){#young .f2-sound-section>.f2-sound-grid{grid-template-columns:1fr}}
