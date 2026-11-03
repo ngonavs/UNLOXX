@@ -1,0 +1,20 @@
+/* UNLOXX premium experience — shared demo and real portal */
+:root{--premium-ink:#16273d;--premium-muted:#62758a;--premium-line:#e3eaf1;--premium-gold:#e9c991;--premium-teal:#187e7a;--premium-shadow:0 18px 55px rgba(20,43,68,.095)}
+html{scroll-behavior:smooth}body{background:radial-gradient(ellipse at 10% -8%,#e4edf9 0,transparent 44%),radial-gradient(ellipse at 98% 30%,#e7f5f0 0,transparent 40%),#f8fafc;color:var(--premium-ink);-webkit-font-smoothing:antialiased}
+header{background:rgba(17,31,59,.94)!important;backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 12px 36px rgba(10,26,48,.14)}
+header strong{font-weight:900;letter-spacing:.13em}header nav button,header nav a{border-radius:999px}
+main{max-width:1220px}h1,h2,h3{letter-spacing:-.035em}h2{font-weight:820}
+.hero,.dash{position:relative;isolation:isolate;overflow:hidden;border-radius:27px!important;background:radial-gradient(circle at 90% 0%,rgba(84,168,190,.3),transparent 42%),linear-gradient(125deg,#101e36 0%,#193b60 60%,#226b70 100%)!important;border:1px solid rgba(255,255,255,.17);box-shadow:0 25px 65px rgba(14,39,68,.2)!important}
+.hero::before,.dash::before{content:"";position:absolute;inset:-50% -20% auto auto;width:75%;height:180%;background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.07) 50%,transparent 65%);transform:rotate(-18deg);pointer-events:none;z-index:-1}
+.hero h1,.dash h1{font-weight:900;letter-spacing:-.055em;line-height:1.08}.hero p,.dash p{line-height:1.75}.eyebrow{letter-spacing:.17em}
+.card,.item,.young-welcome,.note{border-radius:20px!important;border:1px solid var(--premium-line);box-shadow:var(--premium-shadow);background:rgba(255,255,255,.95)}
+.card{padding:clamp(19px,2.5vw,29px)!important;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}.card:hover{transform:translateY(-4px);border-color:#c8d9e1;box-shadow:0 26px 60px rgba(20,43,68,.14)}.card p,.muted{color:var(--premium-muted)}
+button,.card a{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}button{border-radius:12px;font-weight:760;min-height:42px}button:hover:not(:disabled){filter:brightness(1.055)}button:active:not(:disabled){transform:scale(.975)}
+button.teal,#app button:not(.light){background:linear-gradient(135deg,#198d85,#166b75);box-shadow:0 6px 18px rgba(24,126,122,.17)}
+.tabs{gap:8px;padding:11px 0 18px;scrollbar-width:none}.tabs button{border:1px solid #e0e8f0;border-radius:999px!important;padding:11px 18px;background:#fff;color:#344b63;box-shadow:0 3px 12px rgba(26,50,72,.035)}.tabs button.active{background:#183955!important;color:#fff!important;border-color:#183955;box-shadow:0 9px 20px rgba(24,57,85,.18)}
+input,textarea,select{accent-color:var(--premium-teal)}input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #d6a64d!important;outline-offset:3px}
+#real-account-entry{border:1px solid #c6d9d5!important;background:linear-gradient(135deg,#fff,#eff8f5)!important;box-shadow:0 20px 60px rgba(19,89,86,.12)!important}
+#real-account-entry a{box-shadow:0 12px 30px rgba(24,126,122,.24)}
+#app .panel.active{animation:premiumReveal .32s ease both}@keyframes premiumReveal{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.hero,.dash{border-radius:22px!important;padding:26px 22px!important}.card{padding:20px!important}.tabs button{padding:10px 14px;font-size:.9rem}header{border-radius:0}main{padding-left:15px;padding-right:15px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,button{transition:none!important}#app .panel.active{animation:none!important}}
