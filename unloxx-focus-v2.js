@@ -31,7 +31,7 @@ const distractionCard=card('📝 Distraction parking lot'),distractionInput=inpu
 let remaining=1500,started=1500,elapsed=0,interval=null,breakInterval=null,active=false,shieldOn=false,pomodoroCount=0,context=null,soundNodes=[],soundPlaying=false;
 const fmt=n=>String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
 const duration=()=>mode.value==='quick'?10:mode.value==='deep'?50:mode.value==='custom'?Math.max(5,Math.min(120,+custom.value||30)):25;
-function drawClock(){clock.textContent=fmt(remaining);document.title=(active?'⏱ '+fmt(remaining)+' · ':'')+'UNLOXX | Learn, Grow & Connect'}
+function drawClock(){clock.textContent=fmt(remaining);clock.style.setProperty('--focus-progress',Math.max(0,Math.min(100,(started-remaining)/Math.max(1,started)*100)).toFixed(2)+'%');clock.setAttribute('role','timer');clock.setAttribute('aria-label','Focus time remaining '+Math.floor(remaining/60)+' minutes '+(remaining%60)+' seconds');document.title=(active?'⏱ '+fmt(remaining)+' · ':'')+'UNLOXX | Learn, Grow & Connect'}
 function syncMode(){custom.hidden=mode.value!=='custom';if(!active&&!interval){started=remaining=duration()*60;elapsed=0;drawClock()}}mode.addEventListener('change',syncMode);custom.addEventListener('change',syncMode);
 function stop(){if(interval)clearInterval(interval);interval=null;active=false}
 function run(){if(breakInterval)endBreak();if(active)return;active=true;status.textContent='You are doing great. Stay with your task.';interval=setInterval(()=>{remaining--;elapsed++;drawClock();if(remaining<=0)complete()},1000);start.textContent='▶ Running';}
