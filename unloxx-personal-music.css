@@ -1,0 +1,17 @@
+/* Premium personal music player and cozy atmosphere tiles */
+#young .f2-personal-player{background:radial-gradient(circle at 90% 0%,rgba(63,164,141,.2),transparent 48%),linear-gradient(140deg,#122e3c,#0a1d30)!important;border:1px solid rgba(154,236,211,.25)!important;margin:20px 0!important}
+#young .f2-player-heading span{display:block;color:#a0e9d4;font-size:.7rem;letter-spacing:.18em;font-weight:900;margin-bottom:8px}
+#young .f2-player-heading h3{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.05em}
+#young .f2-personal-player input[type=file]{display:block;width:100%;margin:18px 0;padding:13px;border:1px dashed rgba(176,232,220,.4);border-radius:13px;background:rgba(255,255,255,.04)}
+#young .f2-now-playing{font-size:1.2rem;font-weight:850;letter-spacing:-.02em;overflow-wrap:anywhere;margin:20px 0 12px}
+#young .f2-personal-player input[type=range]{width:100%;accent-color:#7cf2cf}
+#young .f2-player-time{text-align:right;font-size:.78rem;color:#c1d8dc;margin:4px 0 14px;font-variant-numeric:tabular-nums}
+#young .f2-player-controls{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin:12px 0 18px}
+#young .f2-player-controls button{border-radius:999px!important;min-width:52px}
+#young .f2-player-controls button:nth-child(2){background:linear-gradient(130deg,#b4f9dc,#66d3b9)!important;color:#08283a!important;min-width:105px;font-weight:900}
+#young .f2-playlist{display:grid;gap:7px;margin-top:18px;max-height:260px;overflow:auto}
+#young .f2-playlist-row{display:flex;align-items:center;gap:8px;border-radius:12px;background:rgba(255,255,255,.04);padding:5px 7px}
+#young .f2-playlist-row.active{background:rgba(112,223,189,.14)}
+#young .f2-playlist-row button:first-child{flex:1;text-align:left;min-width:0;overflow-wrap:anywhere;background:transparent!important;box-shadow:none}
+#young .f2-playlist-row button:last-child{background:transparent!important;box-shadow:none}
+#young .f2-local-cozy .f2-sound-tile{background:linear-gradient(145deg,rgba(73,70,89,.5),rgba(16,43,62,.95))}
