@@ -166,8 +166,8 @@ body.young-focus #young button:hover{filter:none}
 <nav class="mobile-app-nav" aria-label="Mobile app navigation"><button type="button" data-mobile-to="home" onclick="go('home')"><span aria-hidden="true">⌂</span><small>Home</small></button><button type="button" data-mobile-to="young" onclick="go('young')"><span aria-hidden="true">✦</span><small>Young</small></button><button type="button" data-mobile-to="mentors" onclick="go('mentors')"><span aria-hidden="true">◈</span><small>Mentors</small></button><button type="button" data-mobile-to="schools" onclick="go('schools')"><span aria-hidden="true">▦</span><small>Schools</small></button></nav>
 <button id="assistantLaunch" class="unloxx-assistant-launch" onclick="toggleAssistant(true)" aria-label="Open UNLOXX demo assistant">✦ Ask UNLOXX <span aria-hidden="true">↗</span></button>
 <section id="assistantPanel" class="unloxx-assistant" role="dialog" aria-label="UNLOXX demo assistant" hidden>
-<div class="assistant-top"><div><strong>✦ UNLOXX Guide</strong><small>Interactive demo assistant · no AI connection</small></div><button onclick="toggleAssistant(false)" aria-label="Close assistant">✕</button></div>
-<div class="assistant-messages" id="assistantMessages" aria-live="polite"><div class="assistant-message">Hey, explorer! 👋 I'm the UNLOXX demo guide. Ask about events, mentors, schools, student chat, or how this prototype works.</div></div>
+<div class="assistant-top"><div><strong>✦ UNLOXX Guide</strong><small>Demo guide + Wikipedia knowledge lookup</small></div><button onclick="toggleAssistant(false)" aria-label="Close assistant">✕</button></div>
+<div class="assistant-messages" id="assistantMessages" aria-live="polite"><div class="assistant-message">Hey, explorer! 👋 Ask about UNLOXX or a general learning topic. I can look up public information on Wikipedia and provide a source link. This is not yet a reasoning AI model.</div></div>
 <div class="assistant-chips"><button onclick="assistantQuick('How do events work?')">📅 Events</button><button onclick="assistantQuick('How do I find a mentor?')">🌟 Mentors</button><button onclick="assistantQuick('What is UNLOXX Young?')">🎓 Young</button><button onclick="assistantQuick('How does student chat work?')">💬 Chat</button><button onclick="assistantQuick('How do I unregister?')">↩ Unregister</button></div>
 <form class="assistant-compose" onsubmit="assistantSubmit(event)"><input id="assistantInput" maxlength="240" autocomplete="off" placeholder="Ask about UNLOXX..." aria-label="Message demo guide" required><button type="submit">Send</button></form>
 </section><footer class="footer">UNLOXX — Unlock what you can become. · Interactive demo previews; real accounts use secure sign-in.</footer><section class="card" id="real-account-entry" style="max-width:900px;margin:35px auto;padding:32px;text-align:center;border:2px solid #167d78"><div class="eyebrow">REAL UNLOXX ACCOUNT</div><h2>Ready to join UNLOXX?</h2><p>You've explored the demo. Sign in or create a real account to choose your permanent Young, Mentor, or School portal. You can continue reviewing other demo portals afterward, but your account cannot switch its registered portal.</p><a href="./account.html" style="display:inline-block;background:#167d78;color:white;padding:14px 26px;border-radius:12px;font-weight:800;text-decoration:none">Sign in or create account →</a></section>
@@ -223,8 +223,24 @@ if(/go to|open|take me|navigate|show me/.test(t)){if(/event/.test(t)){go("young"
 return "I can help you explore this UNLOXX demo. Try asking: 'How do events work?', 'How do I unregister?', 'How do I find mentors?', or 'What can schools do?' I don't have live AI access yet.";
 }
 function assistantAdd(text,mine){const d=document.createElement("div");d.className="assistant-message"+(mine?" me":"");d.textContent=text;$("assistantMessages").appendChild(d);$("assistantMessages").scrollTop=$("assistantMessages").scrollHeight}
-function assistantQuick(q){assistantAdd(q,true);assistantAdd(assistantReply(q),false)}
-function assistantSubmit(e){e.preventDefault();let input=$("assistantInput"),q=input.value.trim();if(!q)return;assistantAdd(q,true);assistantAdd(assistantReply(q),false);input.value="";input.focus()}
+async function assistantAnswer(q){
+ const local=assistantReply(q);
+ if(!/I can help you explore this UNLOXX demo|I don't have live AI access yet/.test(local)){assistantAdd(local,false);return}
+ const pending=document.createElement("div");pending.className="assistant-message";pending.textContent="Looking for a reliable public source…";$("assistantMessages").appendChild(pending);
+ try{
+  const term=q.replace(/^(what is|who is|tell me about|explain|define|how does|why does)\\s+/i,"").replace(/[?!]+$/,"").trim().slice(0,100);
+  const endpoint="https://en.wikipedia.org/w/api.php?origin=*&action=query&generator=search&gsrsearch="+encodeURIComponent(term)+"&gsrlimit=1&prop=extracts|info&exintro=1&explaintext=1&exchars=850&inprop=url&format=json";
+  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),7000);
+  let response;try{response=await fetch(endpoint,{signal:controller.signal})}finally{clearTimeout(timeout)}
+  if(!response.ok)throw Error("Source unavailable");
+  const data=await response.json();const page=Object.values(data.query?.pages||{})[0];
+  if(!page?.extract||!page?.fullurl)throw Error("No suitable article found");
+  pending.textContent=page.title+"\n"+page.extract.trim()+"\n\nSource: "+page.fullurl+"\n\nPublic encyclopedia summary; verify important facts. I am not yet a reasoning AI.";
+ }catch(err){pending.textContent="I couldn't retrieve a public reference for that question right now. Try a shorter topic, or ask about UNLOXX features. I don't yet have a general reasoning model connected."}
+ $("assistantMessages").scrollTop=$("assistantMessages").scrollHeight;
+}
+function assistantQuick(q){assistantAdd(q,true);assistantAnswer(q)}
+function assistantSubmit(e){e.preventDefault();let input=$("assistantInput"),q=input.value.trim();if(!q)return;assistantAdd(q,true);assistantAnswer(q);input.value="";input.focus()}
 load();
 go("home");
 window.addEventListener("hashchange",()=>{const p=location.hash.slice(1);if(["home","young","mentors","schools"].includes(p))go(p)});
