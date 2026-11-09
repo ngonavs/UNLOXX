@@ -1,0 +1,32 @@
+/* UNLOXX portal identities v1 — homepage deliberately untouched. */
+:root{--ulx-young-ink:#101D32;--ulx-young-lavender:#8B7CF6;--ulx-young-mint:#56D8C2;--ulx-young-paper:#F6F3FF;--ulx-young-amber:#F2B96B;--ulx-mentor-navy:#18243B;--ulx-mentor-gold:#C5A46A;--ulx-mentor-ivory:#F8F4EB;--ulx-mentor-teal:#315E63;--ulx-school-blue:#123D52;--ulx-school-teal:#278C89;--ulx-school-sage:#EDF5F1;--ulx-school-gold:#D6A15B}
+#young{--portal-accent:var(--ulx-young-lavender);--portal-paper:var(--ulx-young-paper);color:var(--ulx-young-ink)}
+#young .hero,#young .dash,#young .young-hero{background:radial-gradient(circle at 87% 12%,#8B7CF64d,transparent 38%),linear-gradient(120deg,#101D32,#273052)!important;color:#fff;border-radius:26px}
+#young .hero h1,#young .dash h1{color:#fff}
+#young .card,#young .item,#young .young-card{background:#fff;border:1px solid #e5dff8;border-radius:20px;box-shadow:0 10px 28px #31235b0b}
+#young .tabs button.active,#young button.teal,#young .young-cta{background:#6756db!important;color:#fff!important}
+#young .tabs button:not(.active){background:#f6f3ff;color:#312b61}
+#young .eyebrow{color:#56d8c2}
+#mentors{--mentor-accent:#C5A46A;--mentor-ink:#18243B;color:#18243B}
+#mentors #mentorHead,#mentors .hero,#mentors .dash{background:radial-gradient(circle at 90% 10%,#c5a46a33,transparent 36%),linear-gradient(125deg,#18243B,#315E63)!important;color:#fff}
+#mentors .mentor-intro{background:linear-gradient(120deg,#18243B,#315E63)!important}
+#mentors .mentor-intro h2,#mentors #mentorHead h1{color:#fff}
+#mentors .card,#mentors .mentor-card,#mentors .item{border:1px solid #e6dece;border-radius:20px;background:#fffdf9;box-shadow:0 10px 28px #18243b0a}
+#mentors .tabs button.active,#mentors button.teal{background:#315E63!important;color:#fff!important}
+#mentors .mentor-eyebrow{color:#C5A46A}
+#schools{--sc-navy:#123D52;--sc-emerald:#278C89;--sc-gold:#D6A15B;--sc-paper:#EDF5F1;--sc-line:#d7e6e2;color:#123D52}
+#schools .school-login-art,#schools .school-hero{background:radial-gradient(circle at 85% 20%,#278c894d,transparent 38%),linear-gradient(130deg,#123D52,#246979)!important;color:#fff}
+#schools .school-app{background:#EDF5F1;border-radius:24px}
+#schools .school-surface,#schools .school-student-card,#schools .school-session-card{background:#fff;border:1px solid #d7e6e2;border-radius:18px;box-shadow:0 9px 25px #123d520c}
+#schools .school-tabs [aria-selected="true"],#schools .school-real-signin{background:#278C89!important;color:#fff!important}
+#schools .school-kicker{color:#D6A15B}
+body.young{--navy:#101D32;--teal:#6756db;--ivory:#F6F3FF;--gold:#56D8C2;background:#F6F3FF;color:#101D32}
+body.mentor{--navy:#18243B;--teal:#315E63;--ivory:#F8F4EB;--gold:#C5A46A;background:#F8F4EB;color:#18243B}
+body.school{--navy:#123D52;--teal:#278C89;--ivory:#EDF5F1;--gold:#D6A15B;background:#EDF5F1;color:#123D52}
+body.young .hero,body.young .dash{background:linear-gradient(120deg,#101D32,#35305f)}
+body.mentor .hero,body.mentor .dash{background:linear-gradient(120deg,#18243B,#315E63)}
+body.school .hero,body.school .dash{background:linear-gradient(120deg,#123D52,#246979)}
+body.young .card{border-color:#e7dffa}body.mentor .card{border-color:#e7dfd0}body.school .card{border-color:#d8e8e3}
+body.young .tabs button.active{background:#6756db;color:white}body.mentor .tabs button.active{background:#315E63;color:white}body.school .tabs button.active{background:#278C89;color:white}
+@media(max-width:760px){#young .hero,#mentors #mentorHead,#schools .school-hero{border-radius:20px;padding:clamp(22px,5vw,32px)}#schools .school-login{grid-template-columns:minmax(0,1fr)!important}#schools .school-tabs{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:thin}#schools .school-tabs button{flex:0 0 auto;white-space:nowrap}body.young .grid,body.mentor .grid,body.school .grid{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){#young *,#mentors *,#schools *{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
