@@ -1,4 +1,4 @@
-/* UNLOXX Young Achievements: browser-only demo progress, no server-verified rewards. */
+/* GRUGYAN Young Achievements: browser-only demo progress, no server-verified rewards. */
 (()=>{'use strict';const root=document.getElementById('young'),bar=root?.querySelector('.tabs[data-role="young"]');if(!root||!bar)return;
 const ranks=[['🌱','Newbie',0],['🪵','Rookie',100],['🧭','Explorer',250],['🗺️','Traveler',450],['⚔️','Adventurer',700],['💎','Achiever',1000],['🔥','Dream Crusher',1400],['🧠','Mastermind',1900],['🔮','Grand Mastermind',2500],['👑','Legends',3200],['🏆','Master Legends',4000]];
 const KEY='unloxx-achievements-demo-v1',GROWTH='unloxx-young-growth-demo-v1';
