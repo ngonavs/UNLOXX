@@ -1,4 +1,4 @@
-/* UNLOXX starburst v3: SVG shapes + Web Animations, no font glyph scaling. */
+/* GRUGYAN starburst v3: SVG shapes + Web Animations, no font glyph scaling. */
 (() => {
   "use strict";
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
