@@ -1,4 +1,4 @@
-/* UNLOXX Phase 1: accessible, resilient portal tab navigation. */
+/* GRUGYAN Phase 1: accessible, resilient portal tab navigation. */
 (() => {
   "use strict";
   const roles = ["young", "mentors", "schools"];
