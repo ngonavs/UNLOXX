@@ -1,4 +1,4 @@
-/* UNLOXX fictional session demo and celebratory WOW effect. No real calls or mentor contact. */
+/* GRUGYAN fictional session demo and celebratory WOW effect. No real calls or mentor contact. */
 (() => {
   "use strict";
   let activeMentor = "Demo Mentor";
