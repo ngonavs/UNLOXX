@@ -1,4 +1,4 @@
-/* UNLOXX Mentor Studio: additive enhancements, demo-only local data. */
+/* GRUGYAN Mentor Studio: additive enhancements, demo-only local data. */
 (()=>{'use strict';const root=document.getElementById('mentors'),bar=root?.querySelector('.tabs[data-role="mentors"]'),head=document.getElementById('mentorHead');if(!bar||!head||root.dataset.mentorStudio)return;root.dataset.mentorStudio='1';
 const safeRead=()=>{try{return JSON.parse(localStorage.getItem('unloxx-mentor-studio-v1')||'{}')}catch{return {}}};let data=safeRead();data.tasks=Array.isArray(data.tasks)?data.tasks:[];data.notes=Array.isArray(data.notes)?data.notes:[];const persist=()=>{try{localStorage.setItem('unloxx-mentor-studio-v1',JSON.stringify(data))}catch{}};const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const home=document.createElement('button');home.type='button';home.dataset.mentorHome='1';home.textContent='⌂ Home';bar.prepend(home);
