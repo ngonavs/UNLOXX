@@ -1,4 +1,4 @@
-/* UNLOXX Focus Studio: local cozy soundscapes and private personal music player.
+/* GRUGYAN Focus Studio: local cozy soundscapes and private personal music player.
    No uploads, streaming providers, tracking, or third-party accounts. */
 (()=>{'use strict';const root=document.querySelector('#young .f2-root');if(!root)return;
 const host=root.querySelector('.f2-sounds');if(!host)return;
