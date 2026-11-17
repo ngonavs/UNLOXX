@@ -1,4 +1,4 @@
-/* UNLOXX Young experience upgrade — browser-local, safe demo. No claims of live AI. */
+/* GRUGYAN Young experience upgrade — browser-local, safe demo. No claims of live AI. */
 (()=>{'use strict';
 const root=document.getElementById('young'),nav=root?.querySelector('.tabs[data-role="young"]');if(!root||!nav)return;
 const key='unloxx-young-experience-v2',today=()=>new Date().toLocaleDateString('en-CA');
@@ -9,7 +9,7 @@ const E=(tag,txt,cls)=>{const n=document.createElement(tag);if(txt!==undefined)n
 const B=(txt,fn)=>{const b=E('button',txt);b.type='button';b.addEventListener('click',fn);return b};
 const field=(parent,label,kind='textarea')=>{const l=E('label',label,'ux-label'),n=E(kind);n.className='ux-input';if(kind==='textarea')n.rows=3;n.maxLength=1200;parent.append(l,n);return n};
 const card=(p,title,desc)=>{const c=E('article',undefined,'ux-card');c.append(E('h3',title),E('p',desc,'muted'));p.append(c);return c};
-const pane=(id,label,heading,desc)=>{let p=document.getElementById(id);if(!p){p=E('div',undefined,'panel ux-panel');p.id=id;root.append(p)}if(!nav.querySelector('[data-panel="'+id+'"]')){let t=B(label,()=>window.tab?.('young',id));t.dataset.panel=id;nav.append(t)}p.prepend(E('p','✦ UNLOXX YOUNG','ux-kicker'),E('h2',heading),E('p',desc,'muted'));return p};
+const pane=(id,label,heading,desc)=>{let p=document.getElementById(id);if(!p){p=E('div',undefined,'panel ux-panel');p.id=id;root.append(p)}if(!nav.querySelector('[data-panel="'+id+'"]')){let t=B(label,()=>window.tab?.('young',id));t.dataset.panel=id;nav.append(t)}p.prepend(E('p','✦ GRUGYAN YOUNG','ux-kicker'),E('h2',heading),E('p',desc,'muted'));return p};
 const show=(id)=>window.tab?.('young',id);
 function earn(n,achievement){state.xp=Math.max(0,(state.xp||0)+n);if(achievement&&!state.achievements.includes(achievement))state.achievements.push(achievement);save();renderXP()}
 const head=document.getElementById('youngHead');const dashboard=E('section',undefined,'ux-dashboard');dashboard.setAttribute('aria-label','XP and achievements dashboard');head?.insertAdjacentElement('afterend',dashboard);
@@ -25,6 +25,6 @@ const workshop=pane('young-workshop','🛠 Workshop','Workshop','Build a project
 const space=document.getElementById('young-sanctuary');if(space){const b=nav.querySelector('[data-panel="young-sanctuary"]');if(b)b.textContent='✦ My Space';const h=space.querySelector('h2');if(h)h.textContent='✦ My Personal Space';const personal=nav.querySelector('[data-panel="young-personal"]');if(personal)personal.textContent='⚙ Preferences'}
 const circle=nav.querySelector('[data-panel="young-circle"]');if(circle)circle.textContent='👥 My Circle & Connect';const connect=nav.querySelector('[data-panel="young-connect"]');if(connect)connect.remove();const connectPane=document.getElementById('young-connect'),circlePane=document.getElementById('young-circle');if(connectPane&&circlePane){circlePane.append(E('h3','Student Connect · local demonstration'));while(connectPane.firstChild)circlePane.append(connectPane.firstChild);connectPane.remove()}
 const mentorPane=document.getElementById('young-mentors');if(mentorPane){const note=E('div','Find inspiration by interest. Profiles are fictional or unverified demonstrations; real mentorship requires verification and supervised participation.','note');mentorPane.prepend(note)}
-const ai=document.querySelector('#assistantMessages .assistant-message');if(ai)ai.textContent="Welcome to the UNLOXX offline guide! I can explain sections and suggest next steps, but I am not connected to a live AI model.";
+const ai=document.querySelector('#assistantMessages .assistant-message');if(ai)ai.textContent="Welcome to the GRUGYAN offline guide! I can explain sections and suggest next steps, but I am not connected to a live AI model.";
 earn(0,'🌱 First Step');
 })();
