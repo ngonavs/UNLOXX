@@ -1,4 +1,4 @@
-/* UNLOXX Focus Studio: 34 openly licensed Wikimedia Commons ambience recordings.
+/* GRUGYAN Focus Studio: 34 openly licensed Wikimedia Commons ambience recordings.
  * Each file's Commons page is linked for author/license and reuse conditions.
  * Media remains hosted by Wikimedia Commons. */
 (()=>{'use strict';
@@ -26,7 +26,7 @@ stopAll.onclick=halt;
 async function start(id,file,button,volume){if(playing.has(id))return;button.disabled=true;button.textContent='Loading…';
 const audio=new Audio('https://commons.wikimedia.org/wiki/Special:Redirect/file/'+encodeURIComponent(file));audio.loop=true;audio.preload='auto';audio.volume=volume;audio.addEventListener('waiting',()=>{if(playing.has(id))button.textContent='Buffering…'});audio.addEventListener('playing',()=>{if(playing.has(id))button.textContent='■ Stop'});
 try{await audio.play();playing.set(id,{audio,button});button.textContent='■ Stop';button.classList.add('f2-sound-active');button.setAttribute('aria-pressed','true');audio.addEventListener('error',()=>{stop(id);button.textContent='↻ Retry';button.title='Recording unavailable; try another sound.'})}
-catch(e){audio.pause();audio.removeAttribute('src');button.textContent='↻ Retry';button.title='Audio unavailable. Open Source to inspect the recording.';console.warn('UNLOXX sound could not play:',file,e)}
+catch(e){audio.pause();audio.removeAttribute('src');button.textContent='↻ Retry';button.title='Audio unavailable. Open Source to inspect the recording.';console.warn('GRUGYAN sound could not play:',file,e)}
 finally{button.disabled=false}}
 for(const [id,label,file,group,artist,license] of tracks){
 const tile=document.createElement('div');tile.className='f2-sound-tile';tile.dataset.group=group;tile.dataset.label=label.toLowerCase();
