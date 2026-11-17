@@ -1,4 +1,4 @@
-/* UNLOXX Young Lab: five self-contained, local-only prototype experiences. */
+/* GRUGYAN Young Lab: five self-contained, local-only prototype experiences. */
 (() => {
 "use strict";
 const young = document.getElementById("young");
@@ -19,14 +19,14 @@ const features=[
 ["young-focuslab","🌿 Focus Studio","A calm study timer and session tracker."],
 ["young-creations","🎨 Creation Studio","Build a private portfolio of your ideas."],
 ["young-workshops","📅 Workshops","Explore sample events and registration."],
-["young-worldlab","✨ My World","Make your UNLOXX space your own."]
+["young-worldlab","✨ My World","Make your GRUGYAN space your own."]
 ];
 // Pricing preview only: no checkout, payment processing, or paid access verification.
 const overview = document.getElementById("young-overview");
 if (overview) {
   const pricing = el("div","unloxx-lab-card");
-  pricing.append(el("h3","","UNLOXX Plans · Preview"));
-  pricing.append(el("p","","Free for everyone: basic UNLOXX AI, nickname and birthday, My Future Skill Tree, Focus Studio, Creation Studio, Workshops and Events. UNLOXX Plus: ₹99/month for extra personalization and an enhanced AI chatbot."));
+  pricing.append(el("h3","","GRUGYAN Plans · Preview"));
+  pricing.append(el("p","","Free for everyone: basic GRUGYAN AI, nickname and birthday, My Future Skill Tree, Focus Studio, Creation Studio, Workshops and Events. GRUGYAN Plus: ₹99/month for extra personalization and an enhanced AI chatbot."));
   pricing.append(el("p","unloxx-lab-note","Pricing is a preview only. No payment is collected, no paid access is enforced, and the enhanced AI chatbot is not yet implemented."));
   overview.append(pricing);
 }
@@ -65,7 +65,7 @@ const events=[["Future Makers Lab","Online","Design a small invention with a fic
 const eventGrid=el("div","unloxx-lab-grid");workshops.append(eventGrid);
 events.forEach(([title,place,desc])=>{const c=card(eventGrid,title,desc);c.append(el("p","unloxx-lab-note",place+" · Demonstration only"),btn("View demo events",()=>{if(typeof window.tab==="function")window.tab("young","young-events");else young.querySelector('[data-panel="young-events"]')?.click()},"unloxx-mini"))});
 notice(workshops,"Real events for minors will require verified organizers, moderation, and guardian or school consent.");
-const world=section("young-worldlab","✨ My UNLOXX World","Personalize this demo on your device. Nothing is shared publicly.");
+const world=section("young-worldlab","✨ My GRUGYAN World","Personalize this demo on your device. Nothing is shared publicly.");
 const worldCard=card(world,"Your space, your style","Pick a nickname and calm color theme.");
 const nickname=el("input","unloxx-lab-input");nickname.placeholder="Your nickname";nickname.maxLength=32;nickname.value=data.nickname;
 const theme=el("select","unloxx-lab-input");[["sage","Pale Sage"],["navy","Midnight Navy"],["sunset","Soft Sunset"]].forEach(([v,l])=>{const o=el("option","",l);o.value=v;theme.append(o)});theme.value=data.theme;
